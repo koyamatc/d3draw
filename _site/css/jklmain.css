@@ -1,0 +1,133 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px
+}
+body {
+  margin-top: 30px;
+  background-color: #333;
+  color: white;
+  text-shadow: 1px 1px 0px #000,
+               2px 2px 0px #000;
+}
+footer {
+  background-color: #333; 
+}
+div- {
+  border:1px solid #ccc;
+}
+a {
+  color:gold;
+}
+a:hover{
+  color:white;
+
+}
+h1,h2,h3,h4,h5,h6 {
+  color:white;
+}
+
+p,ol,li {
+  color:white;
+}
+
+#subtitle {
+  color: yellow;
+  font-weight:bold;
+  margin-top: 0px;
+  text-shadow: 4px 4px 0px #939393,
+               6px 6px 0px #1c1c1c; 
+}
+.text-black {
+  color: #000;
+}
+.text-gold {
+  color: gold;
+}
+.text-red {
+  color: #f00;
+}
+.text-white {
+  color: #fff;
+}
+
+.post-list {
+  font-size: 1.2em;
+}
+
+
+.meta {
+  font-size: 1.2em;
+  color: #aaa;
+}
+
+.panel {
+  background-color: #444;
+  font-weight:bold;
+  padding: 5px;
+}
+.panel h3 {
+  font-weight: bold;
+}
+.panel-body {
+  background-color: #000;
+  text-shadow:#000 0 1px;
+}
+/*****************************************************************************/
+/*
+/* Posts
+/*
+/*****************************************************************************/
+
+/* standard */
+.post {
+  font-size: 1.3em;
+}
+
+.post pre {
+  border: 1px solid #ddd;
+  background-color: #eef;
+  padding: 0 .4em;
+}
+
+.post ul, .post ol {
+  margin-left: 1.35em;
+}
+
+.post code {
+  border: 1px solid #ddd;
+  background-color: #eef;
+  padding: 0 .2em;
+}
+
+.post pre code {
+  border: none;
+}
+
+/* terminal */
+.post pre.terminal {
+  border: 1px solid #000;
+  background-color: #333;
+  color: #FFF;
+}
+
+.post pre.terminal code {
+  background-color: #333;
+}
+
+/**
+ MathJax
+*/
+.MathJax_Display {
+  text-align: left !important;
+  color: #fff;
+}
+.MathJax_SVG_Display {
+  text-align: left !important;
+}
+.MathJax_SVG g{
+  stroke:#fff;
+  stroke-width:2;
+  fill:#fff;
+}

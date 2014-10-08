@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" CONTENT="IE=EmulateIE7" />
+  <title>{{ page.title }}</title>
+  <!-- Le styles -->
+  <link href="{{site.url}}/css/bootstrapx.css" rel="stylesheet">
+  <link href="{{site.url}}/css/bootstrap-glyphicons.css" rel="stylesheet">
+  <link href="{{site.url}}/css/logo.css" rel="stylesheet">
+  <link href="{{site.url}}/css/jklmain.css" rel="stylesheet">
+  <link href="{{site.url}}/css/monokai.css" rel="stylesheet">
+<body>
+  <div class="container">
+    {% include header.html %}
+    
+    {{ content }}
+ 
+    {% include footer.html %}
+
+  </div><!-- container -->
+
+  <!-- JavaScript Libraries -->
+  <script src="{{site.url}}/js/jquery.js"></script>
+  <script src="{{site.url}}/js/bootstrap.js"></script>
+  <script src="{{site.url}}/js/jquery.lettering-0.6.1.min.js"></script>
+  <script src="{{site.url}}/js/logo.js"></script>
+</body>
+</html>
+
