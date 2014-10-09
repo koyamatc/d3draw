@@ -5,8 +5,8 @@
     return this;
   };
 
-  var aDegree = pi/180;
   var pi = Math.PI;
+  var aDegree = pi/180;
   var svgVector;
   var xScaleV,yScaleV;
 
@@ -66,12 +66,75 @@
 
   };
 
-  /* draw vector line */
+  /* ベクトル線　描画関数　*/
+  function drawVectorA(svg,data){
+
+    svgVector = svg;
+    var radians;
+
+    var vectorsA = svg.selectAll(".d3vectorA")
+          .data(data)
+          .enter()
+          .append("line")
+          .attr("x1", function(d,i){
+            xScaleV = d.xScale;
+            yScaleV = d.yScale;
+
+
+            if(i==0){originPoint.x=d.x1;}
+            startPoint.x = d.x1;
+            return d.xScale? d.xScale(d.x1):d.x1;
+          })
+          .attr("y1", function(d,i){
+            if(i==0){originPoint.y=d.y1;}  // 原点
+            startPoint.y = d.y1;　　　　　　　　　　//　始点
+            return d.yScale? d.yScale(d.y1):d.y1;
+          })
+          .attr("x2", function(d){
+            radians = d.angles?(d.angles * aDegree):0;
+            endPoint.x = Math.cos(radians)*d.length+d.x1;
+            halfPoint.x = (endPoint.x-d.x1)/2;
+            return d.xScale? d.xScale(endPoint.x):endPoint.x;
+          })
+          .attr("y2", function(d){
+            radians = d.angles?(d.angles * aDegree):0;
+            endPoint.y = Math.sin(radians)*d.length+d.y1;
+            halfPoint.y = (endPoint.y-d.y1)/2;
+            return d.yScale? d.yScale(endPoint.y):endPoint.y;
+          })        
+          .attr("stroke", function(d){
+            return d.stroke? d.stroke:"#000";
+          })
+          .attr("stroke-width",function(d){
+            return d.strokeWidth?d.strokeWidth:2;
+          })
+          .attr("fill", function(d){
+            return d.fillColor?d.fillColor:"none";
+          })
+          .attr("id",function(d,i){
+            return d.id?d.id:"vectorA"+i;
+          })
+          .attr("class",function(d){
+            return d.class?d.class:"";
+          })
+          .attr("class",function(d){
+            return "d3vectorA";
+          });
+
+     vectorsA.each(drawArrowHead);     
+
+
+  };
+
+
+  /** 
+    draw vector line between points 
+                                    */
   function drawVectorB(svg,data){
 
     svgVector = svg;
 
-    var vectors = svg.selectAll(".d3vector")
+    var vectorsB = svg.selectAll(".d3vectorB")
           .data(data)
           .enter()
           .append("line")
@@ -107,16 +170,73 @@
             return d.fillColor?d.fillColor:"none";
           })
           .attr("id",function(d,i){
-            return d.id?d.id:"vector"+i;
+            return d.id?d.id:"vectorB"+i;
           })
           .attr("class",function(d){
             return d.class?d.class:"";
           })
           .attr("class",function(d){
-            return "d3vector";
+            return "d3vectorB";
           });
 
-     vectors.each(drawArrowHead);     
+     vectorsB.each(drawArrowHead);     
+
+  };
+
+  /** 
+    draw vector line between points 
+                                    */
+  function drawVectorW(svg,data){
+
+    svgVector = svg;
+
+    var vectorsW = svg.selectAll(".d3vectorW")
+          .data(data)
+          .enter()
+          .append("line")
+          .attr("x1", function(d,i){
+            xScaleV = d.xScale;
+            yScaleV = d.yScale;
+            if(i==0){originPoint.x=d.x1;}
+            startPoint.x = d.x1;
+            return d.xScale? d.xScale(d.x1):d.x1;
+          })
+          .attr("y1", function(d,i){
+            if(i==0){originPoint.y=d.y1;}  // 原点
+            startPoint.y = d.y1;　　　　　　　　　　//　始点
+            return d.yScale? d.yScale(d.y1):d.y1;
+          })
+          .attr("x2", function(d){
+            endPoint.x = d.x2;
+            halfPoint.x = (d.x2-d.x1)/2;
+            return d.xScale? d.xScale(d.x2):d.x2;
+          })
+          .attr("y2", function(d){
+            endPoint.y = d.y2;
+            halfPoint.y = (d.y2-d.y1)/2;
+            return d.yScale? d.yScale(d.y2):d.y2;
+          })        
+          .attr("stroke", function(d){
+            return d.stroke? d.stroke:"#000";
+          })
+          .attr("stroke-width",function(d){
+            return d.strokeWidth?d.strokeWidth:2;
+          })
+          .attr("fill", function(d){
+            return d.fillColor?d.fillColor:"none";
+          })
+          .attr("id",function(d,i){
+            return d.id?d.id:"vectorW"+i;
+          })
+          .attr("class",function(d){
+            return d.class?d.class:"";
+          })
+          .attr("class",function(d){
+            return "d3vectorW";
+          });
+
+     vectorsW.each(drawArrowHead);
+     vectorsW.each(drawArrowTail);     
 
   };
 
@@ -161,48 +281,48 @@
 
   };
 
-  /* ベクトル線　描画関数　*/
-  function drawVector(svg,x0,y0,angles,length,xScale,yScale,color){
+  /** */
+  function drawArrowTail(){
+
+    var x1 = parseFloat(this.attributes.x1.value);
+    var x2 = parseFloat(this.attributes.x2.value);
+    var y1 = parseFloat(this.attributes.y1.value);
+    var y2 = parseFloat(this.attributes.y2.value);
+
+    var stroke = this.attributes.stroke.value;
 
     var vectorData = [];
-    var radians = angles * aDegree;
-    var radians1 = pi + radians + pi/6;
-    var radians2 = pi + radians - pi/6;
-    var arrowHead = 10/(xScale(1)-xScale(0));
+    var radians = Math.atan2(y2-y1,x2-x1);
+    var radians1 = radians + pi/6;
+    var radians2 = radians - pi/6;
+    //var arrowHead = 10/(xScaleV(1)-xScaleV(0)); // length of arrow head
+    var arrowHead = 10;
 
-    // 終点の座標
-    endPoint.x = Math.cos(radians)*length+x0;
-    endPoint.y = Math.sin(radians)*length+y0;
- 
-
-    vectorData.push(new Point(x0,y0));
-    vectorData.push(new Point(endPoint.x,endPoint.y));
     vectorData.push(new Point(
-      endPoint.x+Math.cos(radians1)*arrowHead,
-      endPoint.y+Math.sin(radians1)*arrowHead
+      x1 + Math.cos(radians1)*arrowHead,
+      y1 + Math.sin(radians1)*arrowHead
       ));
-    vectorData.push(new Point(endPoint.x,endPoint.y));
+    vectorData.push(new Point(x1,y1));
     vectorData.push(new Point(
-      endPoint.x+Math.cos(radians2)*arrowHead,
-      endPoint.y+Math.sin(radians2)*arrowHead
+      x1+Math.cos(radians2)*arrowHead,
+      y1+Math.sin(radians2)*arrowHead
       ));
 
     var vectorArrow = d3.svg.line()
-        .x(function(d) { return xScale(d.x); })
-        .y(function(d) { return yScale(d.y); })
+        .x(function(d) { return d.x; })
+        .y(function(d) { return d.y; })
         .interpolate("linear");
 
-    svg.append("path")
+    svgVector.append("path")
           .attr("d", vectorArrow(vectorData))
-          .attr("stroke", function(){return color})
-          .attr("class","vector")
-          .attr("stroke-width", 2)
+          .attr("stroke", function(){return stroke;})
+          .attr("class","arrowTail")
+          .attr("stroke-width", function(){return 2;})
           .attr("fill", "none");   
 
   };
 
 
-  
   /* path　描画関数　*/
   function drawPath(svg,data,strokeWidth,xScale,yScale,color){
 

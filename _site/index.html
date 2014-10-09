@@ -15,7 +15,7 @@
 	<div class="container">
 		
 		<h2>
-		 直線 描画関数　drawLine()
+		 直線 描画関数　drawLine(svg,data)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -26,16 +26,17 @@
 var lineData01 = [
 {"x1":100,"y1":50,"x2":300,"y2":50},
 {"x1":100,"y1":80,"x2":300,"y2":80,"stroke":"#f00","strokeWidth":5},
-{"x1":0,"y1":0.7,"x2":1,"y2":0.7,"stroke":"#ff0","strokeWidth":15,
+{"x1":0,"y1":0,"x2":1,"y2":0,"stroke":"#ff0","strokeWidth":15,
 "xScale":xScale01,"yScale":yScale01}
 ];		
+
 drawLine(svg01,lineData01);
 </pre>
 			</div>
-		</div>
+		</div><!-- / row -->
 
 		<h2>
-		 ベクトル 描画関数　drawVector()
+		 ベクトル 描画関数（角度と長さ）　drawVectorA(svg,data)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -43,11 +44,55 @@ drawLine(svg01,lineData01);
 			</div>
 			<div class="col-sm-7">
 <pre>
+var vecData02 = [
+{"x1":0,"y1":0.8,"angles":-45,"length":1,"stroke":"#f0f","strokeWidth":4,"xScale":xScale01,"yScale":yScale01},
+{"x1":1,"y1":0.5,"angles":210,"length":1,"stroke":"#ff0","strokeWidth":5,"xScale":xScale01,"yScale":yScale01}
+];		
+
+drawVectorA(svg02,vecData02);
 </pre>
 			</div>
-		</div>
+		</div><!-- / row -->
 
-	</div><!-- // container -->
+		<h2>
+		 ベクトル 描画関数（2点間)　drawVectorB(svg,data)
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg03"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
+var vecData03 = [
+{"x1":0,"y1":0.8,"x2":1,"y2":0.8,"stroke":"#00f","strokeWidth":4,"xScale":xScale01,"yScale":yScale01},
+{"x1":1,"y1":0.3,"x2":0.5,"y2":0.3,"stroke":"#0ff","strokeWidth":5,"xScale":xScale01,"yScale":yScale01}
+];		
+
+drawVectorB(svg03,vecData03);
+</pre>
+			</div>
+		</div><!-- / row -->
+
+		<h2>
+		 ベクトル 描画関数（2点間 両方向矢印)　drawVectorW(svg,data)
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg04"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
+var vecData04 = [
+{"x1":0,"y1":0.8,"x2":1,"y2":0.8,"stroke":"#ff0","strokeWidth":4,"xScale":xScale01,"yScale":yScale01},
+{"x1":1,"y1":0.3,"x2":0.5,"y2":0.3,"stroke":"#fff","strokeWidth":2,"xScale":xScale01,"yScale":yScale01}
+];		
+
+drawVectorW(svg04,vecData04);
+</pre>
+			</div>
+		</div><!-- / row -->
+
+	</div><!-- / container -->
 
 	<script src="js/jquery.js" charset="utf-8"></script>
 	<script src="js/bootstrap.js" charset="utf-8"></script>
@@ -77,12 +122,30 @@ $(document).on('ready',function(){
   prettyPrint();
 
 });
-		var height = 400;
+		var height = 200;
 		var width  = 400;
 
 		// svg container 
 		var svg01 = d3.select("#svg01")
 				.append("svg")
+				.attr("class","svg1");
+
+		// svg container 
+		var svg02 = d3.select("#svg02")
+				.append("svg")
+				.attr("class","svg1");
+
+		// svg container 
+		var svg03 = d3.select("#svg03")
+				.append("svg")
+				.attr("class","svg1");
+
+		// svg container 
+		var svg04 = d3.select("#svg04")
+				.append("svg")
+				.attr("class","svg1");
+
+		d3.selectAll(".svg1")		
 				.attr("height",height)
 				.attr("width",width)
 				.style("background","#666");
@@ -90,28 +153,48 @@ $(document).on('ready',function(){
 		// scale definition
 		var xScale01 = d3.scale.linear()
                        .domain([0,1])
-                       .range([50,300]);
+                       .range([50,350]);
   
   		var yScale01 = d3.scale.linear()
                        .domain([1,0])
-                       .range([50,300]);       		
+                       .range([50,150]);       		
 
 		var lineData01 = [
 			{"x1":100,"y1":50,"x2":300,"y2":50},
 			{"x1":100,"y1":80,"x2":300,"y2":80,"stroke":"#f00","strokeWidth":5},
-			{"x1":0,"y1":0.7,"x2":1,"y2":0.7,"stroke":"#ff0","strokeWidth":15,
+			{"x1":0,"y1":0,"x2":1,"y2":0,"stroke":"#ff0","strokeWidth":15,
 			"xScale":xScale01,"yScale":yScale01}
 		];		
 		drawLine(svg01,lineData01);
 
-		var vecData01 = [
-			{"x1":0,"y1":0.5,"x2":1,"y2":0.5,"stroke":"#00f","strokeWidth":4,
+		var vecData02 = [
+			{"x1":0,"y1":0.8,"angles":-45,"length":1,"stroke":"#f0f","strokeWidth":4,
 			"xScale":xScale01,"yScale":yScale01},
-			{"x1":1,"y1":0.4,"x2":0.7,"y2":0.4,"stroke":"#0ff","strokeWidth":5,
+			{"x1":1,"y1":0.5,"angles":210,"length":1,"stroke":"#ff0","strokeWidth":5,
 			"xScale":xScale01,"yScale":yScale01}
 		];		
 
-		 drawVectorB(svg01,vecData01);
+		 drawVectorA(svg02,vecData02);
+
+
+		var vecData03 = [
+			{"x1":0,"y1":0.8,"x2":1,"y2":0.8,"stroke":"#00f","strokeWidth":4,
+			"xScale":xScale01,"yScale":yScale01},
+			{"x1":1,"y1":0.3,"x2":0.5,"y2":0.3,"stroke":"#0ff","strokeWidth":5,
+			"xScale":xScale01,"yScale":yScale01}
+		];		
+
+		 drawVectorB(svg03,vecData03);
+
+		var vecData04 = [
+			{"x1":0,"y1":0.8,"x2":1,"y2":0.8,"stroke":"#ff0","strokeWidth":4,
+			"xScale":xScale01,"yScale":yScale01},
+			{"x1":1,"y1":0.3,"x2":0.5,"y2":0.3,"stroke":"#fff","strokeWidth":2,
+			"xScale":xScale01,"yScale":yScale01}
+		];		
+
+		 drawVectorW(svg04,vecData04);
+
 	</script>
 </body>
 </html>
