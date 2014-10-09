@@ -14,27 +14,40 @@
 <body>
 	<div class="container">
 		
-	<h2>
-		 直線描画関数　drawLine()
-	</h2>	
-	<div class="row">
-		<div class="col-sm-5">
-			<div id="svg01"></div>
-		</div>
-		<div class="col-sm-7">
+		<h2>
+		 直線 描画関数　drawLine()
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg01"></div>
+			</div>
+			<div class="col-sm-7">
 <pre>
 var lineData01 = [
-	{"x1":100,"y1":100,"x2":300,"y2":100},
-	{"x1":100,"y1":150,"x2":300,"y2":150,"stroke":"#f00","strokeWidth":5},
-	{"x1":0,"y1":0.5,"x2":1,"y2":0.5,"stroke":"#ff0","strokeWidth":15,
-	"xScale":xScale01,"yScale":yScale01}
+{"x1":100,"y1":50,"x2":300,"y2":50},
+{"x1":100,"y1":80,"x2":300,"y2":80,"stroke":"#f00","strokeWidth":5},
+{"x1":0,"y1":0.7,"x2":1,"y2":0.7,"stroke":"#ff0","strokeWidth":15,
+"xScale":xScale01,"yScale":yScale01}
 ];		
-	
-drawLine(svg01,lineData01);				
+drawLine(svg01,lineData01);
 </pre>
+			</div>
 		</div>
-	</div>
-	</div>
+
+		<h2>
+		 ベクトル 描画関数　drawVector()
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg02"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
+</pre>
+			</div>
+		</div>
+
+	</div><!-- // container -->
 
 	<script src="js/jquery.js" charset="utf-8"></script>
 	<script src="js/bootstrap.js" charset="utf-8"></script>
@@ -77,20 +90,28 @@ $(document).on('ready',function(){
 		// scale definition
 		var xScale01 = d3.scale.linear()
                        .domain([0,1])
-                       .range([100,300]);
+                       .range([50,300]);
   
   		var yScale01 = d3.scale.linear()
                        .domain([1,0])
-                       .range([100,300]);       		
+                       .range([50,300]);       		
 
 		var lineData01 = [
-			{"x1":100,"y1":100,"x2":300,"y2":100},
-			{"x1":100,"y1":150,"x2":300,"y2":150,"stroke":"#f00","strokeWidth":5},
-			{"x1":0,"y1":0.5,"x2":1,"y2":0.5,"stroke":"#ff0","strokeWidth":15,
+			{"x1":100,"y1":50,"x2":300,"y2":50},
+			{"x1":100,"y1":80,"x2":300,"y2":80,"stroke":"#f00","strokeWidth":5},
+			{"x1":0,"y1":0.7,"x2":1,"y2":0.7,"stroke":"#ff0","strokeWidth":15,
+			"xScale":xScale01,"yScale":yScale01}
+		];		
+		drawLine(svg01,lineData01);
+
+		var vecData01 = [
+			{"x1":0,"y1":0.5,"x2":1,"y2":0.5,"stroke":"#00f","strokeWidth":4,
+			"xScale":xScale01,"yScale":yScale01},
+			{"x1":1,"y1":0.4,"x2":0.7,"y2":0.4,"stroke":"#0ff","strokeWidth":5,
 			"xScale":xScale01,"yScale":yScale01}
 		];		
 
-		drawLine(svg01,lineData01);
+		 drawVectorB(svg01,vecData01);
 	</script>
 </body>
 </html>
