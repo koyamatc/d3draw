@@ -16,11 +16,11 @@
 		
 		<h2>
 		 直線 描画関数　drawLine(svg,data)
-		</h2>	
+		</h2>
 		<div class="row">
 			<div class="col-sm-5">
 				<div id="svg01"></div>
-			</div>
+			</div>	
 			<div class="col-sm-7">
 <pre>
 var lineData01 = [
@@ -92,6 +92,137 @@ drawVectorW(svg04,vecData04);
 			</div>
 		</div><!-- / row -->
 
+		<h2>
+		 円　描画関数　drawCircle(svg,data)
+		</h2>
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg05"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
+circleData05 = [
+{"cx":0.5,"cy":0.5,"r":95,"stroke":"#ff0",
+	"xScale":xScale01,"yScale":yScale01},
+{"cx":0.5,"cy":0.5,"r":30,"stroke":"#ff0","fillColor":"#f00",
+	"xScale":xScale01,"yScale":yScale01},
+{"cx":0.2,"cy":0.2,"r":15,"stroke":"#f00","fillColor":"#00f",
+	"xScale":xScale01,"yScale":yScale01},
+{"cx":0.9,"cy":0.8,"r":60,"stroke":"#0f0","strokeWidth":5,
+	"xScale":xScale01,"yScale":yScale01}
+];
+
+drawCircle(svg05,circleData05);
+</pre>
+			</div>
+		</div><!-- / row -->
+		<h2>
+		 円弧　描画関数　drawArc(svg,data)
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg06"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
+var arcData06 = [
+{"startPos":90,"endPos":180,"innerRadius":120,"outerRadius":110,
+	"stroke":"#fff"},
+{"startPos":90,"endPos":0,"innerRadius":100,"outerRadius":100,
+	"xScale":xScale01,"yScale":yScale01},
+{"startPos":120,"endPos":0,"innerRadius":50,"outerRadius":70,
+ "stroke":"#f00","strokeWidth":4,
+ "xTranslate":0.5,"yTranslate":0, 
+ "xScale":xScale01,"yScale":yScale01},	
+ {"startPos":90,"endPos":-30,"innerRadius":20,"outerRadius":100,
+ 	 "stroke":"#00f","strokeWidth":3,"fillColor":"#ff0",
+ 	 "xTranslate":0.8,"yTranslate":0.2, 
+   "xScale":xScale01,"yScale":yScale01}
+];	
+
+drawArc(svg06,arcData06);
+</pre>
+			</div>
+		</div><!-- / row -->
+
+		<h2>
+		 楕円　描画関数　drawEllipse(svg,data)
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg07"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
+</pre>
+			</div>
+		</div><!-- / row -->
+
+		<h2>
+		 長方形　描画関数　drawRectangle(svg,data)
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg08"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
+</pre>
+			</div>
+		</div><!-- / row -->
+
+		<h2>
+		 直角三角形　描画関数　drawRightTri(svg,data)
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg09"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
+</pre>
+			</div>
+		</div><!-- / row -->
+
+		<h2>
+		 多角形　描画関数　drawPolygon(svg,data)
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg10"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
+</pre>
+			</div>
+		</div><!-- / row -->
+
+		<h2>
+		 文字　描画関数　drawＴｅｘｔ(svg,data)
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg10"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
+</pre>
+			</div>
+		</div><!-- / row -->
+
+		<h2>
+		 Mathjax　描画関数　drawMathjax(svg,data)
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg10"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
+</pre>
+			</div>
+		</div><!-- / row -->
+
 	</div><!-- / container -->
 
 	<script src="js/jquery.js" charset="utf-8"></script>
@@ -145,6 +276,31 @@ $(document).on('ready',function(){
 				.append("svg")
 				.attr("class","svg1");
 
+		// svg container 
+		var svg05 = d3.select("#svg05")
+				.append("svg")
+				.attr("class","svg1");
+
+		// svg container 
+		var svg06 = d3.select("#svg06")
+				.append("svg")
+				.attr("class","svg1");
+
+		// svg container 
+		var svg07 = d3.select("#svg07")
+				.append("svg")
+				.attr("class","svg1");
+
+		// svg container 
+		var svg08 = d3.select("#svg08")
+				.append("svg")
+				.attr("class","svg1");
+
+		// svg container 
+		var svg09 = d3.select("#svg09")
+				.append("svg")
+				.attr("class","svg1");
+
 		d3.selectAll(".svg1")		
 				.attr("height",height)
 				.attr("width",width)
@@ -194,6 +350,65 @@ $(document).on('ready',function(){
 		];		
 
 		 drawVectorW(svg04,vecData04);
+  
+		// drawCircle(svg05,data)
+		circleData05 = [
+			{"cx":0.5,"cy":0.5,"r":95,"stroke":"#ff0",
+			"xScale":xScale01,"yScale":yScale01},
+			{"cx":0.5,"cy":0.5,"r":30,"stroke":"#ff0","fillColor":"#f00",
+			"xScale":xScale01,"yScale":yScale01},
+			{"cx":0.2,"cy":0.2,"r":15,"stroke":"#f00","fillColor":"#00f",
+			"xScale":xScale01,"yScale":yScale01},
+			{"cx":0.9,"cy":0.8,"r":60,"stroke":"#0f0","strokeWidth":5,
+			"xScale":xScale01,"yScale":yScale01}
+
+		];
+
+		drawCircle(svg05,circleData05);
+
+  	//drawArc
+  	var arcData06 = [
+  		{"startPos":90,"endPos":180,"innerRadius":120,"outerRadius":110,
+  		"stroke":"#fff"},
+  		{"startPos":90,"endPos":0,"innerRadius":100,"outerRadius":100,
+  			"xScale":xScale01,"yScale":yScale01},
+  		{"startPos":120,"endPos":0,"innerRadius":50,"outerRadius":70,
+  		 "stroke":"#f00","strokeWidth":4,
+  		 "xTranslate":0.5,"yTranslate":0, 
+  			"xScale":xScale01,"yScale":yScale01},	
+  		{"startPos":90,"endPos":-30,"innerRadius":20,"outerRadius":100,
+  		 "stroke":"#00f","strokeWidth":3,"fillColor":"#ff0",
+  		 "xTranslate":0.8,"yTranslate":0.2, 
+  			"xScale":xScale01,"yScale":yScale01}
+
+  	];	
+
+  	drawArc(svg06,arcData06);
+
+  	// 楕円形
+  	ellipseData07 = [
+  		{"cx":0.4,"cy":0.7,"xScale":xScale01,"yScale":yScale01},
+  		{"cx":0.8,"cy":0.3,"rx":50,"ry":80,"stroke":"#f00","fillColor":"#ff0",
+  		 "xScale":xScale01,"yScale":yScale01},
+  		{"cx":0.2,"cy":1.5,"rx":40,"ry":60,"stroke":"#f00","fillColor":"#00f",
+  		 "rAngle":45,"xScale":xScale01,"yScale":yScale01} 
+  	];
+
+  	drawEllipse(svg07,ellipseData07);
+
+  	// 長方形
+  	rectData08 = [
+  		{"x":0.3,"y":0.9,"width":200,"height":90,"stroke":"lime" ,"xScale":xScale01,"yScale":yScale01},
+  		{"x":0.6,"y":0.5,"width":50,"height":80,"stroke":"#f00","fillColor":"#ff0",
+  		 "xScale":xScale01,"yScale":yScale01},
+  		{"x":0.2,"y":1.5,"width":40,"height":60,"stroke":"#f00","fillColor":"#00f",
+  		 "rAngle":45,"xScale":xScale01,"yScale":yScale01} 
+  	];
+
+  	drawRect(svg08,rectData08);
+
+  	/* 直角三角形 */
+  	drawRTriangle(svg09,lineData01);
 
 	</script>
 </body>

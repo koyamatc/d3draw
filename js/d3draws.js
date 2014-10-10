@@ -119,9 +119,8 @@
           })
           .attr("class",function(d){
             return "d3vectorA";
-          });
-
-     vectorsA.each(drawArrowHead);     
+          })
+          .each(drawArrowHead);     
 
 
   };
@@ -177,14 +176,14 @@
           })
           .attr("class",function(d){
             return "d3vectorB";
-          });
-
-     vectorsB.each(drawArrowHead);     
+          })
+          .each(drawArrowHead);     
 
   };
 
   /** 
-    draw vector line between points 
+    draw vector line between points
+       with arrowHead and Tail
                                     */
   function drawVectorW(svg,data){
 
@@ -233,10 +232,9 @@
           })
           .attr("class",function(d){
             return "d3vectorW";
-          });
-
-     vectorsW.each(drawArrowHead);
-     vectorsW.each(drawArrowTail);     
+          })
+          .each(drawArrowHead)
+          .each(drawArrowTail);     
 
   };
 
@@ -342,22 +340,203 @@
  
   };
 
+  /** draw circle */
+  function drawCircle(svg,data){
+    svg.selectAll(".circle")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("cx",function(d){ 
+      return d.xScale?d.xScale(d.cx):d.cx;
+     })
+    .attr("cy",function(d){ 
+      return d.yScale?d.yScale(d.cy):d.cy;
+     })
+    .attr("r",function(d){ return d.r })
+    .attr("stroke",function(d){
+      return d.stroke?d.stroke:"#000"
+    ;})
+    .attr("stroke-width", function(d){
+      return d.strokeWidth?d.strokeWidth:2
+    ;})
+    .style("fill",function(d){
+      return d.fillColor?d.fillColor:"none";
+    })
+    .attr("id", function(d,i){
+      return d.id?d.id:"circle"+i
+    ;})
+    .attr("class", function(d){
+      return "circle"
+    ;})
+    .attr("class", function(d){
+      return d.class?d.class:""
+    ;})
+
+  }
+
+
+
   /* arc　描画関数　*/
-  function drawArc(svg,startPos,endPos,innerRadius,outerRadius,strokeWidth,stroke,fillColor,xScale,yScale){
-
+  //function drawArc(svg,startPos,endPos,innerRadius,outerRadius,strokeWidth,stroke,fillColor,xScale,yScale){
+  function drawArc(svg,data){
     var arc = d3.svg.arc()
-      .innerRadius(function(){return innerRadius})
-      .outerRadius(function() {return outerRadius})
-      .startAngle(function(){return startPos * aDegree;})
-      .endAngle(function() { return endPos * aDegree;});       
+      .innerRadius(function(d){return d.innerRadius})
+      .outerRadius(function(d) {return d.outerRadius})
+      .startAngle(function(d){return d.startPos * aDegree;})
+      .endAngle(function(d) { return d.endPos * aDegree;});       
 
-    svg.append("path")
-    .attr("transform", "translate("+xScale(0)+","+yScale(0)+")")
+    svg.selectAll(".arcs")
+    .data(data)
+    .enter()
+    .append("path")
+    .attr("transform", function(d){
+      return d.xScale?"translate(" +
+                        d.xScale(d.xTranslate?d.xTranslate:0) + "," + 
+                        d.yScale(d.yTranslate?d.yTranslate:0) +")"
+                      :"translate(" + 
+                        d.xTranslate?d.xTranslate:0 + "," + 
+                        d.yTranslate?d.yTranslate:0 + ")"
+    ;})
     .attr("d", arc)
-    .attr("stroke",function(){return stroke;})
-    .attr("stroke-width", function(){return strokeWidth;})
-    .attr("fill",function(){return fillColor;});
+    .attr("stroke",function(d){
+      return d.stroke?d.stroke:"#000";})
+    .attr("stroke-width", function(d){
+      return d.strokeWidth?d.strokeWidth:2;})
+    .style("fill",function(d){
+      return d.fillColor?d.fillColor:"#0f0";})
+    .attr("id",function(d,i){
+      return d.id?d.id:"arc"+i;
+    })
+    .attr("class",function(d){
+      return "arcs"
+    })
+    .attr("class",function(d){
+      return d.class?d.class:"";
+    });
 
+  };
+
+  /** draw Ellipse */
+  function drawEllipse(svg,data){
+    svg.selectAll(".ellipse")
+      .data(data)
+      .enter()
+      .append("ellipse")
+      .attr("cx",function(d){
+        return d.xScale?d.xScale(d.cx?d.cx:0):d.cx?d.cx:0;
+      })
+      .attr("cy",function(d){
+        return d.yScale?d.yScale(d.cy?d.cy:0):d.cy?d.cy:0;
+      })
+      .attr("rx",function(d){
+        return d.rx?d.rx:20;
+      })
+      .attr("ry",function(d){
+        return d.ry?d.ry:10;
+      })
+      .attr("stroke",function(d){
+        return d.stroke?d.stroke:"#000";
+      })
+      .attr("stroke-width", function(d){
+        return d.strokeWidth?d.strokeWidth:2;
+      })
+      .style("fill",function(d){
+       return d.fillColor?d.fillColor:"none";
+      })
+      .attr("id",function(d,i){
+        return d.id?d.id:"ellipse"+i;
+      })
+      .attr("class",function(d){
+        return "ellipsee"
+      })
+      .attr("class",function(d){
+        return d.class?d.class:"";
+      })
+      .attr("transform",function(d){
+        return d.rAngle?"rotate("+d.rAngle+")":"rotate(0)"
+      });
+      
+  };
+
+
+  /** draw Rectangle */
+  function drawRect(svg,data){
+    svg.selectAll(".rect")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("x",function(d){
+        return d.xScale?d.xScale(d.x?d.x:0):d.x?d.x:0;
+      })
+      .attr("y",function(d){
+        return d.yScale?d.yScale(d.y?d.y:0):d.y?d.y:0;
+      })
+      .attr("width",function(d){
+        return d.width?d.width:20;
+      })
+      .attr("height",function(d){
+        return d.height?d.height:10;
+      })
+      .attr("stroke",function(d){
+        return d.stroke?d.stroke:"#000";
+      })
+      .attr("stroke-width", function(d){
+        return d.strokeWidth?d.strokeWidth:2;
+      })
+      .style("fill",function(d){
+       return d.fillColor?d.fillColor:"none";
+      })
+      .attr("id",function(d,i){
+        return d.id?d.id:"rect"+i;
+      })
+      .attr("class",function(d){
+        return "rect"
+      })
+      .attr("class",function(d){
+        return d.class?d.class:"";
+      })
+      .attr("transform",function(d){
+        return d.rAngle?"rotate("+d.rAngle+")":"rotate(0)"
+      });
+      
+  };
+
+  /** 直角三角形 */
+  function drawRTriangle(svg,data){
+    svg.selectAll(".rtriangle")
+      .data(data)
+      .enter()
+      .append("line")
+      .attr("x1",function(d){
+        return d.xScale?d.xScale(d.x1):d.x1;
+      })
+      .attr("y1",function(d){
+        return d.yScale?d.yScale(d.y1):d.y1;
+      })
+      .attr("x2",function(d){
+        return d.xScale?d.xScale(d.x1):d.x1;
+      })
+      .attr("y2",function(d){
+        return d.yScale?d.yScale(d.y1):d.y1;
+      })
+      .each(test);
+  };
+
+  function test(d){
+
+    d3.select(this)
+      .attr("x2",function(d){
+        return d.xScale?d.xScale(d.x2):d.x2
+      })
+      .attr("y2",function(d){
+        return d.xScale?d.yScale(d.y2):d.y2
+      })
+      .attr("stroke",function(d){
+        return d.stroke?d.stroke:"#000"
+      })
+      .attr("stroke-width",function(d){
+        return d.strokeWidth?d.strokeWidth:2
+      })
   };
 
   /** draw Mathjax */
@@ -392,17 +571,3 @@
   }
 
 
-  /** draw circle */
-  function drawCircle(svg,data,xScale,yScale){
-    svg.selectAll("circle")
-    .data(data)
-    .enter()
-    .append("circle")
-    .attr("cx",function(d){ return xScale(d.cx) })
-    .attr("cy",function(d){ return yScale(d.cy) })
-    .attr("r",function(d){ return d.r })
-    .attr("stroke",function(d){return d.stroke;})
-    .attr("stroke-width", function(d){return d.strokeWidth;})
-    .style("fill",function(d){return d.fillColor;});
-
-  }
