@@ -198,7 +198,7 @@ drawArc(svg06,arcData06);
 		</div><!-- / row -->
 
 		<h2>
-		 文字　描画関数　drawＴｅｘｔ(svg,data)
+		 文字　描画関数　drawText(svg,data)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -312,8 +312,8 @@ $(document).on('ready',function(){
                        .range([50,350]);
   
   		var yScale01 = d3.scale.linear()
-                       .domain([1,0])
-                       .range([50,150]);       		
+                       .domain([0,1])
+                       .range([150,50]);       		
 
 		var lineData01 = [
 			{"x1":100,"y1":50,"x2":300,"y2":50},
@@ -408,7 +408,11 @@ $(document).on('ready',function(){
   	drawRect(svg08,rectData08);
 
   	/* 直角三角形 */
-  	drawRTriangle(svg09,lineData01);
+  	var triangleData09 = [
+  	  {"x1":0,"y1":-0.2,"angle":15,"adjacent":200,"theta":30,"stroke":"#f00",
+  		"strokeWidth":4,"xScale":xScale01,"yScale":yScale01}
+  	];
+  	drawRTriangle(svg09,triangleData09);
 
 	</script>
 </body>

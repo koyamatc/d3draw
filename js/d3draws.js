@@ -7,7 +7,7 @@
 
   var pi = Math.PI;
   var aDegree = pi/180;
-  var svgVector;
+  var svgContainer;
   var xScaleV,yScaleV;
 
  
@@ -69,7 +69,7 @@
   /* ベクトル線　描画関数　*/
   function drawVectorA(svg,data){
 
-    svgVector = svg;
+    svgContainer = svg;
     var radians;
 
     var vectorsA = svg.selectAll(".d3vectorA")
@@ -131,7 +131,7 @@
                                     */
   function drawVectorB(svg,data){
 
-    svgVector = svg;
+    svgContainer = svg;
 
     var vectorsB = svg.selectAll(".d3vectorB")
           .data(data)
@@ -187,7 +187,7 @@
                                     */
   function drawVectorW(svg,data){
 
-    svgVector = svg;
+    svgContainer = svg;
 
     var vectorsW = svg.selectAll(".d3vectorW")
           .data(data)
@@ -270,7 +270,7 @@
         .y(function(d) { return d.y; })
         .interpolate("linear");
 
-    svgVector.append("path")
+    svgContainer.append("path")
           .attr("d", vectorArrow(vectorData))
           .attr("stroke", function(){return stroke;})
           .attr("class","arrowHead")
@@ -311,7 +311,7 @@
         .y(function(d) { return d.y; })
         .interpolate("linear");
 
-    svgVector.append("path")
+    svgContainer.append("path")
           .attr("d", vectorArrow(vectorData))
           .attr("stroke", function(){return stroke;})
           .attr("class","arrowTail")
@@ -503,6 +503,9 @@
 
   /** 直角三角形 */
   function drawRTriangle(svg,data){
+    
+    svgContainer = svg;
+
     svg.selectAll(".rtriangle")
       .data(data)
       .enter()
@@ -524,19 +527,55 @@
 
   function test(d){
 
-    d3.select(this)
-      .attr("x2",function(d){
-        return d.xScale?d.xScale(d.x2):d.x2
-      })
-      .attr("y2",function(d){
-        return d.xScale?d.yScale(d.y2):d.y2
-      })
-      .attr("stroke",function(d){
-        return d.stroke?d.stroke:"#000"
-      })
-      .attr("stroke-width",function(d){
-        return d.strokeWidth?d.strokeWidth:2
-      })
+    var stroke = d.stroke?d.stroke:"#000";
+    var strokeWidth = d.strokeWidth?d.strokeWidth:2;
+    var fillColor = d.fillColor?d.fillColor:"none";
+
+    var pointsData = [];
+    var x1,x2,x3,y1,y2,y3;
+    var opposite; // length of opposite side
+    var rightAngle = (d.theta >=0)?-pi/2:pi/2;
+    var factor = (d.theta >=0)?1:-1;
+    var radians = d.angle?(-d.angle * aDegree):0;
+    // start point
+    x1 = d.xScale? d.xScale(d.x1):d.x1;
+    y1 = d.yScale? d.yScale(d.y1):d.y1;
+    // end point of adjacent
+    x2 = Math.cos(radians) * d.adjacent * factor + x1;
+    y2 = Math.sin(radians) * d.adjacent * factor + y1;
+ //    x2 = d.xScale? d.xScale(x2):x2;
+ //    y2 = d.yScale? d.yScale(y2):y2;
+    // end point of opposite
+    opposite = d.adjacent * Math.tan(d.theta * aDegree);
+    x3 = Math.cos(radians+rightAngle) * opposite + x2;
+    y3 = Math.sin(radians+rightAngle) * opposite + y2;
+//    x3 = d.xScale? d.xScale(x3):x3;
+//    y3 = d.yScale? d.yScale(y3):y3;
+
+    pointsData.push(new Point(x1,y1));
+    pointsData.push(new Point(x2,y2));
+    pointsData.push(new Point(x3,y3));
+
+    console.log(pointsData);
+
+    var rightAngleLine = d3.svg.line()
+        .x(function(d) { return d.x; })
+        .y(function(d) { return d.y; })
+        .interpolate("linear");
+
+    svgContainer.append("path")
+        .attr("d", function(d) { 
+        return rightAngleLine(pointsData) + "Z"; }) //<- Z コマンドで線を閉じる
+        .attr("stroke", function(d){ return stroke; })
+        .attr("stroke-width", function(d){ return strokeWidth; })
+        .style("fill", function(d){ return fillColor; })     
+        .attr("class","rightAngle")
+        .attr("id", function(d,i){ return "rightAngle" + i;});
+
+
+    d3.select(this).remove();
+
+   
   };
 
   /** draw Mathjax */
