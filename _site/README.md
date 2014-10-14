@@ -9,7 +9,7 @@ d3draw
 
 ## 機能
 
-+ 直線 |drawLine|
++ 直線 drawLine(svg,data)
 
 + ベクトル線（角度と長さ指定） drawVectorA(svg,data)
 
