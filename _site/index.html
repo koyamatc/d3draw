@@ -12,8 +12,16 @@
 
 </head>
 <body>
+	
 	<div class="container">
-		
+	 <h2>d3.js でＳＶＧを描画する機能を関数化してみました。
+	 	<a href="">d3draws.js</a>
+	 </h2>
+
+		<h3>
+		何度も同じことを書くのが面倒なので。
+		</h3>
+
 		<h2>
 		 直線 描画関数　drawLine(svg,data)
 		</h2>
@@ -127,7 +135,7 @@ drawCircle(svg05,circleData05);
 <pre>
 var arcData06 = [
 {"startPos":90,"endPos":180,"innerRadius":120,"outerRadius":110,
-	"stroke":"#fff"},
+ "stroke":"#fff"},
 {"startPos":90,"endPos":0,"innerRadius":100,"outerRadius":100,
 	"xScale":xScale01,"yScale":yScale01},
 {"startPos":120,"endPos":0,"innerRadius":50,"outerRadius":70,
@@ -135,9 +143,9 @@ var arcData06 = [
  "xTranslate":0.5,"yTranslate":0, 
  "xScale":xScale01,"yScale":yScale01},	
  {"startPos":90,"endPos":-30,"innerRadius":20,"outerRadius":100,
- 	 "stroke":"#00f","strokeWidth":3,"fillColor":"#ff0",
- 	 "xTranslate":0.8,"yTranslate":0.2, 
-   "xScale":xScale01,"yScale":yScale01}
+ "stroke":"#00f","strokeWidth":3,"fillColor":"#ff0",
+ "xTranslate":0.8,"yTranslate":0.2, 
+ "xScale":xScale01,"yScale":yScale01}
 ];	
 
 drawArc(svg06,arcData06);
@@ -154,6 +162,15 @@ drawArc(svg06,arcData06);
 			</div>
 			<div class="col-sm-7">
 <pre>
+ellipseData07 = [
+{"cx":0.4,"cy":0.7,"xScale":xScale01,"yScale":yScale01},
+{"cx":0.8,"cy":0.3,"rx":50,"ry":80,"stroke":"#f00","fillColor":"#ff0",
+ "xScale":xScale01,"yScale":yScale01},
+{"cx":0.2,"cy":1.5,"rx":40,"ry":60,"stroke":"#f00","fillColor":"#00f",
+ "rAngle":45,"xScale":xScale01,"yScale":yScale01} 
+];
+
+drawEllipse(svg07,ellipseData07);
 </pre>
 			</div>
 		</div><!-- / row -->
@@ -167,6 +184,15 @@ drawArc(svg06,arcData06);
 			</div>
 			<div class="col-sm-7">
 <pre>
+rectData08 = [
+{"x":0.3,"y":0.9,"width":200,"height":90,"stroke":"lime" ,"xScale":xScale01,"yScale":yScale01},
+{"x":0.6,"y":0.5,"width":50,"height":80,"stroke":"#f00","fillColor":"#ff0",
+ "xScale":xScale01,"yScale":yScale01},
+{"x":0.2,"y":1.5,"width":40,"height":60,"stroke":"#f00","fillColor":"#00f",
+ "rAngle":45,"xScale":xScale01,"yScale":yScale01} 
+];
+
+drawRect(svg08,rectData08);
 </pre>
 			</div>
 		</div><!-- / row -->
@@ -180,6 +206,13 @@ drawArc(svg06,arcData06);
 			</div>
 			<div class="col-sm-7">
 <pre>
+var triangleData09 = [
+{"x1":50,"y1":30,"angle":15,"adjacent":200,"theta":30,"stroke":"#f00",
+ "strokeWidth":4,"xScale":xScale02,"yScale":yScale02},
+ {"x1":350,"y1":130,"angle":190,"adjacent":150,"theta":25,"stroke":"#ff0","strokeWidth":4,"xScale":xScale02,"yScale":yScale02}
+];
+
+drawRTriangle(svg09,triangleData09);
 </pre>
 			</div>
 		</div><!-- / row -->
@@ -193,6 +226,22 @@ drawArc(svg06,arcData06);
 			</div>
 			<div class="col-sm-7">
 <pre>
+var polyData10 = [
+{"cx":100,"cy":80,"r":50,"sides":3,"start":90,
+ "stroke":"#ff0",
+ "xScale":xScale02,"yScale":yScale02},
+{"cx":100,"cy":80,"r":50,"sides":3,"start":-90,
+ "stroke":"#ff0",
+ "xScale":xScale02,"yScale":yScale02},
+{"cx":220,"cy":90,"r":70,"sides":8,"start":0,
+ "stroke":"#0f0","fillColor":c10(5),
+ "xScale":xScale02,"yScale":yScale02},
+{"cx":330,"cy":60,"r":60,"sides":5,"start":180,
+ "stroke":"#00f","strokeWidth":5,"fillColor":c10(7),
+ "xScale":xScale02,"yScale":yScale02}
+];
+
+drawPolygon(svg10,polyData10);
 </pre>
 			</div>
 		</div><!-- / row -->
@@ -202,10 +251,20 @@ drawArc(svg06,arcData06);
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
-				<div id="svg10"></div>
+				<div id="svg11"></div>
 			</div>
 			<div class="col-sm-7">
 <pre>
+var textData11 = [
+{"x":100,"y":150,"text":"anchor start","anchor":"start","stroke":"#ff0","fontSize":18,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02},
+{"x":100,"y":100,"text":"anchor middle","anchor":"middle","stroke":"#ff0","fontSize":18,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02},
+{"x":100,"y":50,"text":"anchor end","anchor":"end","stroke":"#ff0",
+"fontSize":18,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02},
+{"x":250,"y":200,"text":"rotate 30","rAngle":30,"stroke":"#ff0","fillColor":"#f00",
+"fontSize":36,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02}
+];
+
+drawText(svg11,textData11);
 </pre>
 			</div>
 		</div><!-- / row -->
@@ -215,10 +274,16 @@ drawArc(svg06,arcData06);
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
-				<div id="svg10"></div>
+				<div id="svg12"></div>
 			</div>
 			<div class="col-sm-7">
 <pre>
+var mathData12 = [
+{"x":100,"y":200,"text":"$$ax^2+bx+c=0$$","xScale":xScale02,"yScale":yScale02,"fontSize":16},
+{"x":100,"y":150,"text":"$$x=\\frac{-b\\pm\\sqrt{ b^2-4ac }}{2a}$$","xScale":xScale02,"yScale":yScale02,"fontSize":16}
+];
+  	
+drawMathjax(svg12,mathData12);
 </pre>
 			</div>
 		</div><!-- / row -->
@@ -253,6 +318,9 @@ $(document).on('ready',function(){
   prettyPrint();
 
 });
+
+		var c10 = d3.scale.category10();
+		
 		var height = 200;
 		var width  = 400;
 
@@ -298,6 +366,21 @@ $(document).on('ready',function(){
 
 		// svg container 
 		var svg09 = d3.select("#svg09")
+				.append("svg")
+				.attr("class","svg1");
+		// svg container 
+
+		var svg10 = d3.select("#svg10")
+				.append("svg")
+				.attr("class","svg1");
+
+		// svg container 
+		var svg11 = d3.select("#svg11")
+				.append("svg")
+				.attr("class","svg1");
+
+		// svg container 
+		var svg12 = d3.select("#svg12")
 				.append("svg")
 				.attr("class","svg1");
 
@@ -407,12 +490,70 @@ $(document).on('ready',function(){
 
   	drawRect(svg08,rectData08);
 
+		// scale definition
+		var xScale02 = d3.scale.linear()
+                       .domain([50,350])
+                       .range([50,350]);
+  
+  		var yScale02 = d3.scale.linear()
+                       .domain([50,150])
+                       .range([150,50]);       		
+
   	/* 直角三角形 */
   	var triangleData09 = [
-  	  {"x1":0,"y1":-0.2,"angle":15,"adjacent":200,"theta":30,"stroke":"#f00",
-  		"strokeWidth":4,"xScale":xScale01,"yScale":yScale01}
+  	  {"x1":50,"y1":30,"angle":15,"adjacent":200,"theta":30,"stroke":"#f00",
+  		"strokeWidth":4,"xScale":xScale02,"yScale":yScale02},
+  	  {"x1":350,"y1":130,"angle":190,"adjacent":150,"theta":25,"stroke":"#ff0","strokeWidth":4,"xScale":xScale02,"yScale":yScale02}
+
   	];
   	drawRTriangle(svg09,triangleData09);
+
+  	/** ポリゴン　*/
+ 		var polyData10 = [
+ 			{"cx":100,"cy":80,"r":50,"sides":3,"start":90,
+ 			"stroke":"#ff0",
+ 			"xScale":xScale02,"yScale":yScale02},
+ 			{"cx":100,"cy":80,"r":50,"sides":3,"start":-90,
+ 			"stroke":"#ff0",
+ 			"xScale":xScale02,"yScale":yScale02},
+ 			{"cx":220,"cy":90,"r":70,"sides":8,"start":0,
+ 			"stroke":"#0f0","fillColor":c10(5),
+ 			"xScale":xScale02,"yScale":yScale02},
+ 			{"cx":330,"cy":60,"r":60,"sides":5,"start":180,
+ 			"stroke":"#00f","strokeWidth":5,"fillColor":c10(7),
+ 			"xScale":xScale02,"yScale":yScale02}
+
+ 		];
+
+ 		drawPolygon(svg10,polyData10);
+
+
+  	/* テキスト */
+  	var textData11 = [
+  	  {"x":100,"y":150,"text":"anchor start","anchor":"start","stroke":"#ff0","fontSize":18,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02},
+  	  {"x":100,"y":100,"text":"anchor middle","anchor":"middle","stroke":"#ff0","fontSize":18,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02},
+  	  {"x":100,"y":50,"text":"anchor end","anchor":"end","stroke":"#ff0",
+  		"fontSize":18,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02},
+  	  {"x":250,"y":200,"text":"rotate 30","rAngle":30,"stroke":"#ff0","fillColor":"#f00",
+  		"fontSize":36,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02}
+  	];
+
+  	var circleData11 = [
+  		{"cx":100,"cy":140,"r":10,"stroke":"#fff","fillColor":c10(0),"stroke-width":4,"xScale":xScale02,"yScale":yScale02},
+  		{"cx":100,"cy":90,"r":10,"stroke":"#fff","fillColor":c10(1),"stroke-width":4,"xScale":xScale02,"yScale":yScale02},
+  		{"cx":100,"cy":40,"r":10,"stroke":"#fff","fillColor":c10(2),"stroke-width":4,"xScale":xScale02,"yScale":yScale02}
+  	];
+  	drawText(svg11,textData11);
+  	drawCircle(svg11,circleData11);
+
+  	/** draw mathjax */
+  	var mathData12 = [
+  		{"x":100,"y":200,"text":"$$ax^2+bx+c=0$$","xScale":xScale02,"yScale":yScale02,"fontSize":16},
+  		{"x":100,"y":150,"text":"$$x=\\frac{-b\\pm\\sqrt{ b^2-4ac }}{2a}$$","xScale":xScale02,"yScale":yScale02,"fontSize":16}
+
+  	];
+  	
+  	drawMathjax(svg12,mathData12);
 
 	</script>
 </body>
