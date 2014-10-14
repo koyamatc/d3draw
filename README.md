@@ -1,7 +1,7 @@
 d3draw
 ======
 
-# JavaScripts to draw svg shapes with d3.js 
+# JavaScript to draw svg shapes with d3.js 
 
 ###d3.jsを使ってsvgの図形を描画する関数を作ってみました。
 
@@ -10,6 +10,7 @@ d3draw
 ## 機能
 
 |:---:|:---|
+
 |直線|drawLine|
 
 |ベクトル線（角度と長さ指定）|drawVectorA|
