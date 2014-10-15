@@ -1,3 +1,8 @@
+/**
+  d3draws.js  v1.0.0
+  functions to draw svg shapes with d3.js
+**/
+
   // Point Object
   function Point(x, y){
     this.x = x;
@@ -5,10 +10,10 @@
     return this;
   };
 
-  var pi = Math.PI;
-  var aDegree = pi/180;
-  var svgContainer;
-  var xScaleV,yScaleV;
+  var pi = Math.PI;       //円周率
+  var aDegree = pi/180;   //1°をラジアンに変換 
+  var svgContainer;       //svg保管変数　　　　　
+//  var xScaleV,yScaleV;
  
   var originPoint = new Point(); // 原点
   var startPoint = new Point();　　// 始点
@@ -18,7 +23,7 @@
   var x0 = y0 = 0;
 
   /* 直線　描画関数　*/
-  function drawLine(svg,data){
+  function drawLine(svg,data,xScale,yScale){
 
     var lines = svg.selectAll(".line")
           .data(data)
@@ -27,22 +32,22 @@
           .attr("x1", function(d,i){
             if(i==0){originPoint.x=d.x1;}
             startPoint.x = d.x1;
-            return d.xScale? d.xScale(d.x1):d.x1;
+            return xScale? xScale(d.x1):d.x1;
           })
           .attr("y1", function(d,i){
             if(i==0){originPoint.y=d.y1;}  // 原点
             startPoint.y = d.y1;　　　　　　　　　　//　始点
-            return d.yScale? d.yScale(d.y1):d.y1;
+            return yScale? yScale(d.y1):d.y1;
           })
           .attr("x2", function(d){
             endPoint.x = d.x2;
             halfPoint.x = (d.x2-d.x1)/2;
-            return d.xScale? d.xScale(d.x2):d.x2;
+            return xScale? xScale(d.x2):d.x2;
           })
           .attr("y2", function(d){
             endPoint.y = d.y2;
             halfPoint.y = (d.y2-d.y1)/2;
-            return d.yScale? d.yScale(d.y2):d.y2;
+            return yScale? yScale(d.y2):d.y2;
           })        
           .attr("id",function(d,i){
             return d.id?d.id:"line"+i;
@@ -287,21 +292,22 @@
 
 
   /* path　描画関数　*/
-  function drawPath(svg,data,strokeWidth,xScale,yScale,color){
+  function drawPath(svg,data,stroke,strokeWidth,fillColor,xScale,yScale){
 
-    var pathData = data;
+    var stroke = stroke?stroke:"#000";
+    var strokeWidth = strokeWidth?strokeWidth:2;
+    var fillColor = fillColor?fillColor:"none";
 
     var path = d3.svg.line()
-        .x(function(d) { return xScale(d.x); })
-        .y(function(d) { return yScale(d.y); })
+        .x(function(d) { return xScale?xScale(d.x):d.x; })
+        .y(function(d) { return yScale?yScale(d.y):d.y; })
         .interpolate("linear");
 
     svg.append("path")
           .attr("d", path(data))
-          .attr("stroke", function(){return color})
-          .attr("class","path")
-          .attr("stroke-width", function(){return strokeWidth>0? strokeWidth:2})
-          .attr("fill", "none");   
+          .attr("stroke",stroke)
+          .attr("stroke-width",strokeWidth)
+          .style("fill",fillColor);
  
   };
 
@@ -635,3 +641,116 @@
         return d.rAngle?"rotate("+d.rAngle+")":"rotate(0)"});   
 
   };
+
+  /** draw axes */
+  function drawAxes(svg,data){
+    
+    var xOrient = data["xOrient"]?data["xOrient"]:["bottom"];
+    var yOrient = data["yOrient"]?data["yOrient"]:["left"];
+    var xTickPadding = data["xTickPadding"]?data["xTickPadding"]:5;
+    var yTickPadding = data["yTickPadding"]?data["yTickPadding"]:5;
+    var xFormat = data["xFormat"]?data["xFormat"]:"d";
+    var yFormat = data["yFormat"]?data["yFormat"]:"d";
+    var stroke = data["stroke"]?data["stroke"]:"#000";
+    var strokeWidth = data["strokeWidth"]?data["strokeWidth"]:2;
+    var fillColor = data["fillColor"]?data["fillColor"]:"none";
+    // draw x-axis
+    if (data["xAxis"]) {
+
+      var xAxis = d3.svg.axis()
+                  .scale(data["xScale"])
+                  .orient(xOrient)
+                  .tickValues(data["xTickValues"])
+                  .tickPadding(xTickPadding)
+                  .tickFormat(d3.format(xFormat));
+
+      var xAxisGroup = svg.append("g")
+                  .attr("transform",
+                    "translate(0,"+data["yScale"](0)+")")
+                  .attr("stroke",stroke)
+                  .attr("stroke-width",strokeWidth)
+                  .style("fill",fillColor)
+                  .call(xAxis);       
+    };
+
+    
+    // draw y-axis
+    if (data["yAxis"]) {
+
+      var yAxis = d3.svg.axis()
+                  .scale(data["yScale"])
+                  .orient(yOrient)
+                  .tickValues(data["yTickValues"])
+                  .tickPadding(yTickPadding)
+                  .tickFormat(d3.format(yFormat));
+
+
+      var yAxisGroup = svg.append("g")
+                  .attr("transform",
+                    "translate("+data["xScale"](0)+",0)")
+                  .attr("stroke",stroke)
+                  .attr("stroke-width",strokeWidth)
+                  .style("fill",fillColor)
+                  .call(yAxis);       
+    };
+                  
+  };
+
+  /** draw grid */
+  function drawGrid(svg,data){
+    var x0 = data["xScale"].domain()[0];
+    var x1 = data["xScale"].domain()[1];
+    var y0 = data["yScale"].domain()[0];
+    var y1 = data["yScale"].domain()[1];
+    var xStep = data["xStep"]?data["xStep"]:50;
+    var yStep = data["yStep"]?data["yStep"]:50;
+    var stroke = data["stroke"]?data["stroke"]:"#ccc";
+    var strokeWidth = data["strokeWidth"]?data["strokeWidth"]:1;
+    var opacity = data["opacity"]?data["opacity"]:0.5;
+
+ //   var gridGroup = svg.append("g")
+   //                   .attr("class","gridGroup");
+
+    if (data["xGrid"]){
+
+      for (var i = x0; i <= x1; i=i + xStep) {
+
+        if (i!=0){
+
+          svg.append("line")
+            .attr("x1",data["xScale"](i))
+            .attr("y1",data["yScale"](y0))
+           .attr("x2",data["xScale"](i))
+           .attr("y2",data["yScale"](y1))
+           .attr("class","grid")
+           .attr("stroke",stroke)
+           .attr("stroke-width",strokeWidth)
+           .attr("opacity",opacity);
+        }
+
+      };                  
+    };
+    if (data["yGrid"]){
+
+      for (var i = y0; i <= y1; i=i + yStep) {
+
+        if (i!=0){
+
+          svg.append("line")
+            .attr("x1",data["xScale"](x0))
+            .attr("y1",data["yScale"](i))
+           .attr("x2",data["xScale"](x1))
+           .attr("y2",data["yScale"](i))
+           .attr("class","grid")
+           .attr("stroke",stroke)
+           .attr("stroke-width",strokeWidth)
+           .attr("opacity",opacity);
+        }
+
+      };                  
+    };
+
+    d3.selectAll(".grid")
+
+  }
+

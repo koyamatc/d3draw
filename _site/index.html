@@ -23,7 +23,7 @@
 		</h3>
 
 		<h2>
-		 直線 描画関数　drawLine(svg,data)
+		 直線 描画関数　drawLine(svg,data,xScale,yScale)
 		</h2>
 		<div class="row">
 			<div class="col-sm-5">
@@ -31,20 +31,27 @@
 			</div>	
 			<div class="col-sm-7">
 <pre>
-var lineData01 = [
-{"x1":100,"y1":50,"x2":300,"y2":50},
-{"x1":100,"y1":80,"x2":300,"y2":80,"stroke":"#f00","strokeWidth":5},
-{"x1":0,"y1":0,"x2":1,"y2":0,"stroke":"#ff0","strokeWidth":15,
-"xScale":xScale01,"yScale":yScale01}
-];		
+// scale definition
+var xScale01 = d3.scale.linear()
+                     .domain([0,1])
+                     .range([50,350]);
+  
+var yScale01 = d3.scale.linear()
+                     .domain([0,1])
+                     .range([150,50]);       		
 
-drawLine(svg01,lineData01);
+var lineData01 = [
+{"x1":0,"y1":0.8,"x2":1,"y2":0.2},
+{"x1":0,"y1":0.5,"x2":1,"y2":1,"stroke":"#f00","strokeWidth":5},
+{"x1":0,"y1":0,"x2":1,"y2":0,"stroke":"#ff0","strokeWidth":15}
+];		
+drawLine(svg01,lineData01,xScale01,yScale01);
 </pre>
 			</div>
 		</div><!-- / row -->
 
 		<h2>
-		 ベクトル 描画関数（角度と長さ）　drawVectorA(svg,data)
+		 ベクトル 描画関数（角度と長さ）　drawVectorA(svg,data,xScale,yScale)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -63,7 +70,7 @@ drawVectorA(svg02,vecData02);
 		</div><!-- / row -->
 
 		<h2>
-		 ベクトル 描画関数（2点間)　drawVectorB(svg,data)
+		 ベクトル 描画関数（2点間)　drawVectorB(svg,data,xScale,yScale)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -82,7 +89,7 @@ drawVectorB(svg03,vecData03);
 		</div><!-- / row -->
 
 		<h2>
-		 ベクトル 描画関数（2点間 両方向矢印)　drawVectorW(svg,data)
+		 ベクトル 描画関数（2点間 両方向矢印)　drawVectorW(svg,data,xScale,yScale)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -101,7 +108,7 @@ drawVectorW(svg04,vecData04);
 		</div><!-- / row -->
 
 		<h2>
-		 円　描画関数　drawCircle(svg,data)
+		 円　描画関数　drawCircle(svg,data,xScale,yScale)
 		</h2>
 		<div class="row">
 			<div class="col-sm-5">
@@ -125,7 +132,7 @@ drawCircle(svg05,circleData05);
 			</div>
 		</div><!-- / row -->
 		<h2>
-		 円弧　描画関数　drawArc(svg,data)
+		 円弧　描画関数　drawArc(svg,data,xScale,yScale)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -154,7 +161,7 @@ drawArc(svg06,arcData06);
 		</div><!-- / row -->
 
 		<h2>
-		 楕円　描画関数　drawEllipse(svg,data)
+		 楕円　描画関数　drawEllipse(svg,data,xScale,yScale)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -176,7 +183,7 @@ drawEllipse(svg07,ellipseData07);
 		</div><!-- / row -->
 
 		<h2>
-		 長方形　描画関数　drawRectangle(svg,data)
+		 長方形　描画関数　drawRectangle(svg,data,xScale,yScale)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -198,7 +205,7 @@ drawRect(svg08,rectData08);
 		</div><!-- / row -->
 
 		<h2>
-		 直角三角形　描画関数　drawRightTri(svg,data)
+		 直角三角形　描画関数　drawRightTri(svg,data,xScale,yScale)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -218,7 +225,7 @@ drawRTriangle(svg09,triangleData09);
 		</div><!-- / row -->
 
 		<h2>
-		 多角形　描画関数　drawPolygon(svg,data)
+		 多角形　描画関数　drawPolygon(svg,data,xScale,yScale)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -247,7 +254,7 @@ drawPolygon(svg10,polyData10);
 		</div><!-- / row -->
 
 		<h2>
-		 文字　描画関数　drawText(svg,data)
+		 文字　描画関数　drawText(svg,data,xScale,yScale)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -270,7 +277,7 @@ drawText(svg11,textData11);
 		</div><!-- / row -->
 
 		<h2>
-		 Mathjax　描画関数　drawMathjax(svg,data)
+		 Mathjax　描画関数　drawMathjax(svg,data,xScale,yScale)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -284,6 +291,79 @@ var mathData12 = [
 ];
   	
 drawMathjax(svg12,mathData12);
+</pre>
+			</div>
+		</div><!-- / row -->
+
+		<h2>
+		 軸　描画関数　drawAxes(svg,data,xScale,yScale)
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg13"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
+axesData13 = 
+{
+"xAxis":true,
+"yAxis":true,
+"xTickValues":[-50,0,100,200,300],
+"yTickValues":[-100.0,150.5,300.0],
+"xTickPadding":5,
+"yTickPadding":2,
+"xOrient":["bottom"],
+"yOrient":["left"],
+"xFormat":"f",
+"yFormat":".1f",
+"stroke":"#ff0",
+"strokeWidth":1,
+"fillColor":"none",
+"xScale":xScale03,
+"yScale":yScale03
+};
+drawAxes(svg13,axesData13);
+</pre>
+			</div>
+		</div><!-- / row -->
+
+
+		<h2>
+		 グリッド　描画関数　drawGrid(svg,data,xScale,yScale)
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg14"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
+gridData14 = 
+{
+"xGrid":true,
+"yGrid":true,
+"xStep":100,
+"yStep":50,
+"stroke":"#0f0",
+"strokeWidth":1,
+"opacity":0.3,
+"xScale":xScale03,
+"yScale":yScale03
+};
+drawAxes(svg14,axesData13);  	
+drawGrid(svg14,gridData14);  	
+</pre>
+			</div>
+		</div><!-- / row -->
+
+		<h2>
+		 Path　描画関数　drawPath(svg,data,stroke,strokeWidth,fillColor,xScale,yScale)
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg15"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
 </pre>
 			</div>
 		</div><!-- / row -->
@@ -384,8 +464,28 @@ $(document).on('ready',function(){
 				.append("svg")
 				.attr("class","svg1");
 
+		// svg container 
+		var svg13 = d3.select("#svg13")
+				.append("svg")
+				.attr("class","svg2");
+
+		// svg container 
+		var svg14 = d3.select("#svg14")
+				.append("svg")
+				.attr("class","svg2");
+
+		// svg container 
+		var svg15 = d3.select("#svg15")
+				.append("svg")
+				.attr("class","svg2");
+
 		d3.selectAll(".svg1")		
 				.attr("height",height)
+				.attr("width",width)
+				.style("background","#666");
+
+		d3.selectAll(".svg2")		
+				.attr("height",width)
 				.attr("width",width)
 				.style("background","#666");
 		
@@ -394,17 +494,16 @@ $(document).on('ready',function(){
                        .domain([0,1])
                        .range([50,350]);
   
-  		var yScale01 = d3.scale.linear()
+		var yScale01 = d3.scale.linear()
                        .domain([0,1])
                        .range([150,50]);       		
 
 		var lineData01 = [
-			{"x1":100,"y1":50,"x2":300,"y2":50},
-			{"x1":100,"y1":80,"x2":300,"y2":80,"stroke":"#f00","strokeWidth":5},
-			{"x1":0,"y1":0,"x2":1,"y2":0,"stroke":"#ff0","strokeWidth":15,
-			"xScale":xScale01,"yScale":yScale01}
+			{"x1":0,"y1":0.8,"x2":1,"y2":0.2},
+			{"x1":0,"y1":0.5,"x2":1,"y2":1,"stroke":"#f00","strokeWidth":5},
+			{"x1":0,"y1":0,"x2":1,"y2":0,"stroke":"#ff0","strokeWidth":15}
 		];		
-		drawLine(svg01,lineData01);
+		drawLine(svg01,lineData01,xScale01,yScale01);
 
 		var vecData02 = [
 			{"x1":0,"y1":0.8,"angles":-45,"length":1,"stroke":"#f0f","strokeWidth":4,
@@ -554,6 +653,65 @@ $(document).on('ready',function(){
   	];
   	
   	drawMathjax(svg12,mathData12);
+
+  	/** 軸　*/
+		// scale definition
+		var xScale03 = d3.scale.linear()
+                       .domain([-50,300])
+                       .range([50,350]);
+  
+		var yScale03 = d3.scale.linear()
+                       .domain([-100,300])
+                       .range([350,50]);       		
+
+  	axesData13 = 
+  	{ "xAxis":true,
+  		"yAxis":true,
+  		"xTickValues":[-50,0,100,200,300],
+  		"yTickValues":[-100.0,150.5,300.0],
+  		"xTickPadding":5,
+  		"yTickPadding":2,
+ // 	"xOrient":["top"],
+ //		"yOrient":["right"],
+ 			"xFormat":"f",
+ 			"yFormat":".1f",
+ 			"stroke":"#ff0",
+ 			"strokeWidth":1,
+ //		"fillColor":"#00f",
+  		"xScale":xScale03,
+  		"yScale":yScale03
+  	};
+
+  	drawAxes(svg13,axesData13);
+
+  	/* グリッド */
+  	gridData14 = 
+  	{ "xGrid":true,
+  		"yGrid":true,
+  		"xStep":100,
+  		"yStep":50,
+ 			"stroke":"#0f0",
+ 			"strokeWidth":1,
+ 			"opacity":0.3,
+  		"xScale":xScale03,
+  		"yScale":yScale03
+  	};
+ 		drawAxes(svg14,axesData13);  	
+ 		drawGrid(svg14,gridData14);  	
+
+ 		/* Path */
+ 		pathData15 = [
+ 			{"x":-30,"y":150,"stroke":"#f00","fillColor":"none"},
+ 			{"x":80,"y":50,"stroke":"#f00","fillColor":"none"},
+ 			{"x":150,"y":-80,"stroke":"#f00","fillColor":"none"},
+ 			{"x":200,"y":200,"stroke":"#f00","fillColor":"none"},
+ 			{"x":280,"y":250,"stroke":"#f00","fillColor":"none"}
+
+ 		]; 
+ 		drawAxes(svg15,axesData13);  	
+ 		drawGrid(svg15,gridData14);
+ 		drawPath(svg15,pathData15,"#f00",3,"none",xScale03,yScale03);
+ 		drawPath(svg15,pathData15);
 
 	</script>
 </body>

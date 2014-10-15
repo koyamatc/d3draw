@@ -3,11 +3,9 @@ d3draw
 
 # JavaScript to draw svg shapes with d3.js 
 
-###d3.jsを使ってsvgの図形を描画する関数を作ってみました。
+###d3.jsを使ってsvgの図形を描画する関数__d3draws.js__を作ってみました。
 
-###個人使用のため、結構いい加減に作っています。
-
-## 機能
+## 機能 v1.0.0
 
  +直線 drawLine 
 
@@ -32,3 +30,7 @@ d3draw
  +文字 drawText 
 
  +Mathjax drawMathjax 
+
+ +軸　drawAxes
+
+ +グリッド drawGrid
