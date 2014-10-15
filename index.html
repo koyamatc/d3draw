@@ -14,13 +14,11 @@
 <body>
 	
 	<div class="container">
-	 <h2>d3.js でＳＶＧを描画する機能を関数化してみました。
-	 	<a href="">d3draws.js</a>
-	 </h2>
-
-		<h3>
-		何度も同じことを書くのが面倒なので。
-		</h3>
+		<h1>
+	 		<a href="https://github.com/koyamatc/d3draw/">d3draws.js</a>
+		</h1>
+	 	<h2>d3.js でＳＶＧを描画する機能を関数化してみました。
+	 	</h2>
 
 		<h2>
 		 直線 描画関数　drawLine(svg,data,xScale,yScale)
@@ -60,8 +58,8 @@ drawLine(svg01,lineData01,xScale01,yScale01);
 			<div class="col-sm-7">
 <pre>
 var vecData02 = [
-{"x1":0,"y1":0.8,"angles":-45,"length":1,"stroke":"#f0f","strokeWidth":4,"xScale":xScale01,"yScale":yScale01},
-{"x1":1,"y1":0.5,"angles":210,"length":1,"stroke":"#ff0","strokeWidth":5,"xScale":xScale01,"yScale":yScale01}
+{"x1":0,"y1":0.8,"angles":-45,"length":1,"stroke":"#f0f","strokeWidth":4},
+{"x1":1,"y1":0.5,"angles":210,"length":1,"stroke":"#ff0","strokeWidth":5}
 ];		
 
 drawVectorA(svg02,vecData02);
@@ -79,8 +77,8 @@ drawVectorA(svg02,vecData02);
 			<div class="col-sm-7">
 <pre>
 var vecData03 = [
-{"x1":0,"y1":0.8,"x2":1,"y2":0.8,"stroke":"#00f","strokeWidth":4,"xScale":xScale01,"yScale":yScale01},
-{"x1":1,"y1":0.3,"x2":0.5,"y2":0.3,"stroke":"#0ff","strokeWidth":5,"xScale":xScale01,"yScale":yScale01}
+{"x1":0,"y1":0.8,"x2":1,"y2":0.8,"stroke":"#00f","strokeWidth":4},
+{"x1":1,"y1":0.3,"x2":0.5,"y2":0.3,"stroke":"#0ff","strokeWidth":5}
 ];		
 
 drawVectorB(svg03,vecData03);
@@ -98,8 +96,8 @@ drawVectorB(svg03,vecData03);
 			<div class="col-sm-7">
 <pre>
 var vecData04 = [
-{"x1":0,"y1":0.8,"x2":1,"y2":0.8,"stroke":"#ff0","strokeWidth":4,"xScale":xScale01,"yScale":yScale01},
-{"x1":1,"y1":0.3,"x2":0.5,"y2":0.3,"stroke":"#fff","strokeWidth":2,"xScale":xScale01,"yScale":yScale01}
+{"x1":0,"y1":0.8,"x2":1,"y2":0.8,"stroke":"#ff0","strokeWidth":4},
+{"x1":1,"y1":0.3,"x2":0.5,"y2":0.3,"stroke":"#fff","strokeWidth":2}
 ];		
 
 drawVectorW(svg04,vecData04);
@@ -117,14 +115,10 @@ drawVectorW(svg04,vecData04);
 			<div class="col-sm-7">
 <pre>
 circleData05 = [
-{"cx":0.5,"cy":0.5,"r":95,"stroke":"#ff0",
-	"xScale":xScale01,"yScale":yScale01},
-{"cx":0.5,"cy":0.5,"r":30,"stroke":"#ff0","fillColor":"#f00",
-	"xScale":xScale01,"yScale":yScale01},
-{"cx":0.2,"cy":0.2,"r":15,"stroke":"#f00","fillColor":"#00f",
-	"xScale":xScale01,"yScale":yScale01},
-{"cx":0.9,"cy":0.8,"r":60,"stroke":"#0f0","strokeWidth":5,
-	"xScale":xScale01,"yScale":yScale01}
+{"cx":0.5,"cy":0.5,"r":95,"stroke":"#ff0"},
+{"cx":0.5,"cy":0.5,"r":30,"stroke":"#ff0","fillColor":"#f00"},
+{"cx":0.2,"cy":0.2,"r":15,"stroke":"#f00","fillColor":"#00f"},
+{"cx":0.9,"cy":0.8,"r":60,"stroke":"#0f0","strokeWidth":5}
 ];
 
 drawCircle(svg05,circleData05);
@@ -143,16 +137,13 @@ drawCircle(svg05,circleData05);
 var arcData06 = [
 {"startPos":90,"endPos":180,"innerRadius":120,"outerRadius":110,
  "stroke":"#fff"},
-{"startPos":90,"endPos":0,"innerRadius":100,"outerRadius":100,
-	"xScale":xScale01,"yScale":yScale01},
+{"startPos":90,"endPos":0,"innerRadius":100,"outerRadius":100},
 {"startPos":120,"endPos":0,"innerRadius":50,"outerRadius":70,
  "stroke":"#f00","strokeWidth":4,
- "xTranslate":0.5,"yTranslate":0, 
- "xScale":xScale01,"yScale":yScale01},	
+ "xTranslate":0.5,"yTranslate":0},	
  {"startPos":90,"endPos":-30,"innerRadius":20,"outerRadius":100,
  "stroke":"#00f","strokeWidth":3,"fillColor":"#ff0",
- "xTranslate":0.8,"yTranslate":0.2, 
- "xScale":xScale01,"yScale":yScale01}
+ "xTranslate":0.8,"yTranslate":0.2}
 ];	
 
 drawArc(svg06,arcData06);
@@ -170,11 +161,9 @@ drawArc(svg06,arcData06);
 			<div class="col-sm-7">
 <pre>
 ellipseData07 = [
-{"cx":0.4,"cy":0.7,"xScale":xScale01,"yScale":yScale01},
-{"cx":0.8,"cy":0.3,"rx":50,"ry":80,"stroke":"#f00","fillColor":"#ff0",
- "xScale":xScale01,"yScale":yScale01},
-{"cx":0.2,"cy":1.5,"rx":40,"ry":60,"stroke":"#f00","fillColor":"#00f",
- "rAngle":45,"xScale":xScale01,"yScale":yScale01} 
+{"cx":0.4,"cy":0.7},
+{"cx":0.8,"cy":0.3,"rx":50,"ry":80,"stroke":"#f00","fillColor":"#ff0"},
+{"cx":0.2,"cy":1.5,"rx":40,"ry":60,"stroke":"#f00","fillColor":"#00f","rAngle":45} 
 ];
 
 drawEllipse(svg07,ellipseData07);
@@ -192,11 +181,10 @@ drawEllipse(svg07,ellipseData07);
 			<div class="col-sm-7">
 <pre>
 rectData08 = [
-{"x":0.3,"y":0.9,"width":200,"height":90,"stroke":"lime" ,"xScale":xScale01,"yScale":yScale01},
-{"x":0.6,"y":0.5,"width":50,"height":80,"stroke":"#f00","fillColor":"#ff0",
- "xScale":xScale01,"yScale":yScale01},
+{"x":0.3,"y":0.9,"width":200,"height":90,"stroke":"lime" },
+{"x":0.6,"y":0.5,"width":50,"height":80,"stroke":"#f00","fillColor":"#ff0"},
 {"x":0.2,"y":1.5,"width":40,"height":60,"stroke":"#f00","fillColor":"#00f",
- "rAngle":45,"xScale":xScale01,"yScale":yScale01} 
+ "rAngle":45} 
 ];
 
 drawRect(svg08,rectData08);
@@ -215,8 +203,8 @@ drawRect(svg08,rectData08);
 <pre>
 var triangleData09 = [
 {"x1":50,"y1":30,"angle":15,"adjacent":200,"theta":30,"stroke":"#f00",
- "strokeWidth":4,"xScale":xScale02,"yScale":yScale02},
- {"x1":350,"y1":130,"angle":190,"adjacent":150,"theta":25,"stroke":"#ff0","strokeWidth":4,"xScale":xScale02,"yScale":yScale02}
+ "strokeWidth":4},
+ {"x1":350,"y1":130,"angle":190,"adjacent":150,"theta":25,"stroke":"#ff0","strokeWidth":4}
 ];
 
 drawRTriangle(svg09,triangleData09);
@@ -234,18 +222,10 @@ drawRTriangle(svg09,triangleData09);
 			<div class="col-sm-7">
 <pre>
 var polyData10 = [
-{"cx":100,"cy":80,"r":50,"sides":3,"start":90,
- "stroke":"#ff0",
- "xScale":xScale02,"yScale":yScale02},
-{"cx":100,"cy":80,"r":50,"sides":3,"start":-90,
- "stroke":"#ff0",
- "xScale":xScale02,"yScale":yScale02},
-{"cx":220,"cy":90,"r":70,"sides":8,"start":0,
- "stroke":"#0f0","fillColor":c10(5),
- "xScale":xScale02,"yScale":yScale02},
-{"cx":330,"cy":60,"r":60,"sides":5,"start":180,
- "stroke":"#00f","strokeWidth":5,"fillColor":c10(7),
- "xScale":xScale02,"yScale":yScale02}
+{"cx":100,"cy":80,"r":50,"sides":3,"start":90,"stroke":"#ff0"},
+{"cx":100,"cy":80,"r":50,"sides":3,"start":-90,"stroke":"#ff0"},
+{"cx":220,"cy":90,"r":70,"sides":8,"start":0,"stroke":"#0f0","fillColor":c10(5)},
+{"cx":330,"cy":60,"r":60,"sides":5,"start":180,"stroke":"#00f","strokeWidth":5,"fillColor":c10(7)}
 ];
 
 drawPolygon(svg10,polyData10);
@@ -263,15 +243,12 @@ drawPolygon(svg10,polyData10);
 			<div class="col-sm-7">
 <pre>
 var textData11 = [
-{"x":100,"y":150,"text":"anchor start","anchor":"start","stroke":"#ff0","fontSize":18,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02},
-{"x":100,"y":100,"text":"anchor middle","anchor":"middle","stroke":"#ff0","fontSize":18,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02},
-{"x":100,"y":50,"text":"anchor end","anchor":"end","stroke":"#ff0",
-"fontSize":18,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02},
-{"x":250,"y":200,"text":"rotate 30","rAngle":30,"stroke":"#ff0","fillColor":"#f00",
-"fontSize":36,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02}
+  {"x":100,"y":150,"text":"anchor start","anchor":"start","stroke":"#ff0","fontSize":18,"strokeWidth":2,"fontFamily":"cursive"},
+  {"x":100,"y":100,"text":"anchor middle","anchor":"middle","stroke":"#ff0",  "fontSize":18,"strokeWidth":2,"fontFamily":"fantasy"},
+  {"x":100,"y":50,"text":"anchor end","anchor":"end","stroke":"#ff0","fontSize":18,"strokeWidth":2,"fontFamily":"monospace"},
+  {"x":250,"y":200,"text":"rotate 30","rAngle":30,"stroke":"#ff0","fillColor":"#f00","fontSize":36,"strokeWidth":2,"fontFamily":"cursive"}
 ];
-
-drawText(svg11,textData11);
+drawText(svg11,textData11,xScale02,yScale02);
 </pre>
 			</div>
 		</div><!-- / row -->
@@ -286,8 +263,8 @@ drawText(svg11,textData11);
 			<div class="col-sm-7">
 <pre>
 var mathData12 = [
-{"x":100,"y":200,"text":"$$ax^2+bx+c=0$$","xScale":xScale02,"yScale":yScale02,"fontSize":16},
-{"x":100,"y":150,"text":"$$x=\\frac{-b\\pm\\sqrt{ b^2-4ac }}{2a}$$","xScale":xScale02,"yScale":yScale02,"fontSize":16}
+{"x":100,"y":200,"text":"$$ax^2+bx+c=0$$","fontSize":16},
+{"x":100,"y":150,"text":"$$x=\\frac{-b\\pm\\sqrt{ b^2-4ac }}{2a}$$","fontSize":16}
 ];
   	
 drawMathjax(svg12,mathData12);
@@ -296,7 +273,7 @@ drawMathjax(svg12,mathData12);
 		</div><!-- / row -->
 
 		<h2>
-		 軸　描画関数　drawAxes(svg,data,xScale,yScale)
+		 軸　描画関数　drawAxes(svg,data)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -304,9 +281,13 @@ drawMathjax(svg12,mathData12);
 			</div>
 			<div class="col-sm-7">
 <pre>
-axesData13 = 
-{
-"xAxis":true,
+var xScale03 = d3.scale.linear()
+                 .domain([-50,300])
+                 .range([50,350]);
+var yScale03 = d3.scale.linear()
+                 .domain([-100,300])
+                 .range([350,50]);       		
+axesData13 = { 
 "yAxis":true,
 "xTickValues":[-50,0,100,200,300],
 "yTickValues":[-100.0,150.5,300.0],
@@ -329,7 +310,7 @@ drawAxes(svg13,axesData13);
 
 
 		<h2>
-		 グリッド　描画関数　drawGrid(svg,data,xScale,yScale)
+		 グリッド　描画関数　drawGrid(svg,data)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -364,6 +345,17 @@ drawGrid(svg14,gridData14);
 			</div>
 			<div class="col-sm-7">
 <pre>
+pathData15 = [
+	{"x":-30,"y":150},
+	{"x":80,"y":50},
+	{"x":150,"y":-80},
+	{"x":200,"y":200},
+	{"x":280,"y":250}
+	]; 
+drawAxes(svg15,axesData13);  	
+drawGrid(svg15,gridData14);
+drawPath(svg15,pathData15,"#f00",3,"none",xScale03,yScale03);
+drawPath(svg15,pathData15);
 </pre>
 			</div>
 		</div><!-- / row -->
@@ -378,306 +370,266 @@ drawGrid(svg14,gridData14);
 	<script src="js/d3draws.js" charset="utf-8"></script>
 	
 	<script type="text/javascript">
-!function ($) {
+	!function ($) {
 
-  $(function(){
+  		$(function(){
 
-    var $window = $(window)
+    		var $window = $(window)
 
-    // make code pretty
-    window.prettyPrint && prettyPrint()
+    		// make code pretty
+    		window.prettyPrint && prettyPrint()
 
      
-  })
+  		})
 
-}(window.jQuery)
+	}(window.jQuery)
 
-$(document).on('ready',function(){
-  $('pre').addClass('prettyprint');
-  $('pre').css('font-size',16);
-  prettyPrint();
+	$(document).on('ready',function(){
+  		$('pre').addClass('prettyprint');
+  		$('pre').css('font-size',16);
+  		prettyPrint();
 
-});
+	});
 
-		var c10 = d3.scale.category10();
+	var c10 = d3.scale.category10();
 		
-		var height = 200;
-		var width  = 400;
+	var height = 200;
+	var width  = 400;
 
-		// svg container 
-		var svg01 = d3.select("#svg01")
-				.append("svg")
-				.attr("class","svg1");
+	// svg container 
+	var svg01 = d3.select("#svg01")
+			.append("svg")
+			.attr("class","svg1");
 
-		// svg container 
-		var svg02 = d3.select("#svg02")
-				.append("svg")
-				.attr("class","svg1");
+	var svg02 = d3.select("#svg02")
+			.append("svg")
+			.attr("class","svg1");
 
-		// svg container 
-		var svg03 = d3.select("#svg03")
-				.append("svg")
-				.attr("class","svg1");
+	var svg03 = d3.select("#svg03")
+			.append("svg")
+			.attr("class","svg1");
 
-		// svg container 
-		var svg04 = d3.select("#svg04")
-				.append("svg")
-				.attr("class","svg1");
+	var svg04 = d3.select("#svg04")
+			.append("svg")
+			.attr("class","svg1");
 
-		// svg container 
-		var svg05 = d3.select("#svg05")
-				.append("svg")
-				.attr("class","svg1");
+	var svg05 = d3.select("#svg05")
+			.append("svg")
+			.attr("class","svg1");
 
-		// svg container 
-		var svg06 = d3.select("#svg06")
-				.append("svg")
-				.attr("class","svg1");
+	var svg06 = d3.select("#svg06")
+			.append("svg")
+			.attr("class","svg1");
 
-		// svg container 
-		var svg07 = d3.select("#svg07")
-				.append("svg")
-				.attr("class","svg1");
+	var svg07 = d3.select("#svg07")
+			.append("svg")
+			.attr("class","svg1");
 
-		// svg container 
-		var svg08 = d3.select("#svg08")
-				.append("svg")
-				.attr("class","svg1");
+	var svg08 = d3.select("#svg08")
+			.append("svg")
+			.attr("class","svg1");
 
-		// svg container 
-		var svg09 = d3.select("#svg09")
-				.append("svg")
-				.attr("class","svg1");
-		// svg container 
+	var svg09 = d3.select("#svg09")
+			.append("svg")
+			.attr("class","svg1");
 
-		var svg10 = d3.select("#svg10")
-				.append("svg")
-				.attr("class","svg1");
+	var svg10 = d3.select("#svg10")
+			.append("svg")
+			.attr("class","svg1");
 
-		// svg container 
-		var svg11 = d3.select("#svg11")
-				.append("svg")
-				.attr("class","svg1");
+	var svg11 = d3.select("#svg11")
+			.append("svg")
+			.attr("class","svg1");
 
-		// svg container 
-		var svg12 = d3.select("#svg12")
-				.append("svg")
-				.attr("class","svg1");
+	var svg12 = d3.select("#svg12")
+			.append("svg")
+			.attr("class","svg1");
 
-		// svg container 
-		var svg13 = d3.select("#svg13")
-				.append("svg")
-				.attr("class","svg2");
+	var svg13 = d3.select("#svg13")
+			.append("svg")
+			.attr("class","svg2");
 
-		// svg container 
-		var svg14 = d3.select("#svg14")
-				.append("svg")
-				.attr("class","svg2");
+	var svg14 = d3.select("#svg14")
+			.append("svg")
+			.attr("class","svg2");
 
-		// svg container 
-		var svg15 = d3.select("#svg15")
-				.append("svg")
-				.attr("class","svg2");
+	var svg15 = d3.select("#svg15")
+			.append("svg")
+			.attr("class","svg2");
 
-		d3.selectAll(".svg1")		
-				.attr("height",height)
-				.attr("width",width)
-				.style("background","#666");
+	d3.selectAll(".svg1")		
+			.attr("height",height)
+			.attr("width",width)
+			.style("background","#666");
 
-		d3.selectAll(".svg2")		
-				.attr("height",width)
-				.attr("width",width)
-				.style("background","#666");
+	d3.selectAll(".svg2")		
+			.attr("height",width)
+			.attr("width",width)
+			.style("background","#666");
 		
-		// scale definition
-		var xScale01 = d3.scale.linear()
-                       .domain([0,1])
-                       .range([50,350]);
+	// scale definition
+	var xScale01 = d3.scale.linear()
+                      .domain([0,1])
+                      .range([50,350]);
   
-		var yScale01 = d3.scale.linear()
-                       .domain([0,1])
-                       .range([150,50]);       		
+	var yScale01 = d3.scale.linear()
+                      .domain([0,1])
+                      .range([150,50]);       		
 
-		var lineData01 = [
-			{"x1":0,"y1":0.8,"x2":1,"y2":0.2},
-			{"x1":0,"y1":0.5,"x2":1,"y2":1,"stroke":"#f00","strokeWidth":5},
-			{"x1":0,"y1":0,"x2":1,"y2":0,"stroke":"#ff0","strokeWidth":15}
-		];		
-		drawLine(svg01,lineData01,xScale01,yScale01);
+    /** 直線 */                      
+	var lineData01 = [
+		{"x1":0,"y1":0.8,"x2":1,"y2":0.2},
+		{"x1":0,"y1":0.5,"x2":1,"y2":1,"stroke":"#f00","strokeWidth":5},
+		{"x1":0,"y1":0,"x2":1,"y2":0,"stroke":"#ff0","strokeWidth":15}
+	];		
+	drawLine(svg01,lineData01,xScale01,yScale01);
 
-		var vecData02 = [
-			{"x1":0,"y1":0.8,"angles":-45,"length":1,"stroke":"#f0f","strokeWidth":4,
-			"xScale":xScale01,"yScale":yScale01},
-			{"x1":1,"y1":0.5,"angles":210,"length":1,"stroke":"#ff0","strokeWidth":5,
-			"xScale":xScale01,"yScale":yScale01}
-		];		
+	/** ベクトルA　*/
+	var vecData02 = [
+		{"x1":0,"y1":0.8,"angles":-45,"length":1,"stroke":"#f0f","strokeWidth":4},
+		{"x1":1,"y1":0.5,"angles":210,"length":1,"stroke":"#ff0","strokeWidth":5}
+	];		
 
-		 drawVectorA(svg02,vecData02);
+	 drawVectorA(svg02,vecData02,xScale01,yScale01);
 
-
-		var vecData03 = [
-			{"x1":0,"y1":0.8,"x2":1,"y2":0.8,"stroke":"#00f","strokeWidth":4,
-			"xScale":xScale01,"yScale":yScale01},
-			{"x1":1,"y1":0.3,"x2":0.5,"y2":0.3,"stroke":"#0ff","strokeWidth":5,
-			"xScale":xScale01,"yScale":yScale01}
+	 /** ベクトルB*/
+	var vecData03 = [
+		{"x1":0,"y1":0.8,"x2":1,"y2":0.8,"stroke":"#00f","strokeWidth":4},
+			{"x1":1,"y1":0.3,"x2":0.5,"y2":0.3,"stroke":"#0ff","strokeWidth":5}
 		];		
 
-		 drawVectorB(svg03,vecData03);
+	 drawVectorB(svg03,vecData03,xScale01,yScale01);
 
-		var vecData04 = [
-			{"x1":0,"y1":0.8,"x2":1,"y2":0.8,"stroke":"#ff0","strokeWidth":4,
-			"xScale":xScale01,"yScale":yScale01},
-			{"x1":1,"y1":0.3,"x2":0.5,"y2":0.3,"stroke":"#fff","strokeWidth":2,
-			"xScale":xScale01,"yScale":yScale01}
+	/** ベクトルW */ 
+	var vecData04 = [
+			{"x1":0,"y1":0.8,"x2":1,"y2":0.8,"stroke":"#ff0","strokeWidth":4},
+			{"x1":1,"y1":0.3,"x2":0.5,"y2":0.3,"stroke":"#fff","strokeWidth":2}
 		];		
 
-		 drawVectorW(svg04,vecData04);
+	drawVectorW(svg04,vecData04,xScale01,yScale01);
   
-		// drawCircle(svg05,data)
-		circleData05 = [
-			{"cx":0.5,"cy":0.5,"r":95,"stroke":"#ff0",
-			"xScale":xScale01,"yScale":yScale01},
-			{"cx":0.5,"cy":0.5,"r":30,"stroke":"#ff0","fillColor":"#f00",
-			"xScale":xScale01,"yScale":yScale01},
-			{"cx":0.2,"cy":0.2,"r":15,"stroke":"#f00","fillColor":"#00f",
-			"xScale":xScale01,"yScale":yScale01},
-			{"cx":0.9,"cy":0.8,"r":60,"stroke":"#0f0","strokeWidth":5,
-			"xScale":xScale01,"yScale":yScale01}
+	// 円
+	circleData05 = [
+		{"cx":0.5,"cy":0.5,"r":95,"stroke":"#ff0"},
+		{"cx":0.5,"cy":0.5,"r":30,"stroke":"#ff0","fillColor":"#f00"},
+		{"cx":0.2,"cy":0.2,"r":15,"stroke":"#f00","fillColor":"#00f"},
+		{"cx":0.9,"cy":0.8,"r":60,"stroke":"#0f0","strokeWidth":5}
 
 		];
 
-		drawCircle(svg05,circleData05);
+	drawCircle(svg05,circleData05,xScale01,yScale01);
 
-  	//drawArc
+  	//円弧
   	var arcData06 = [
   		{"startPos":90,"endPos":180,"innerRadius":120,"outerRadius":110,
   		"stroke":"#fff"},
-  		{"startPos":90,"endPos":0,"innerRadius":100,"outerRadius":100,
-  			"xScale":xScale01,"yScale":yScale01},
+  		{"startPos":90,"endPos":0,"innerRadius":100,"outerRadius":100},
   		{"startPos":120,"endPos":0,"innerRadius":50,"outerRadius":70,
-  		 "stroke":"#f00","strokeWidth":4,
-  		 "xTranslate":0.5,"yTranslate":0, 
-  			"xScale":xScale01,"yScale":yScale01},	
+  		 "stroke":"#f00","strokeWidth":4,"xTranslate":0.5,"yTranslate":0},	
   		{"startPos":90,"endPos":-30,"innerRadius":20,"outerRadius":100,
   		 "stroke":"#00f","strokeWidth":3,"fillColor":"#ff0",
-  		 "xTranslate":0.8,"yTranslate":0.2, 
-  			"xScale":xScale01,"yScale":yScale01}
+  		 "xTranslate":0.8,"yTranslate":0.2}
 
   	];	
 
-  	drawArc(svg06,arcData06);
+  	drawArc(svg06,arcData06,xScale01,yScale01);
 
   	// 楕円形
   	ellipseData07 = [
-  		{"cx":0.4,"cy":0.7,"xScale":xScale01,"yScale":yScale01},
-  		{"cx":0.8,"cy":0.3,"rx":50,"ry":80,"stroke":"#f00","fillColor":"#ff0",
-  		 "xScale":xScale01,"yScale":yScale01},
+  		{"cx":0.4,"cy":0.7},
+  		{"cx":0.8,"cy":0.3,"rx":50,"ry":80,"stroke":"#f00","fillColor":"#ff0"},
   		{"cx":0.2,"cy":1.5,"rx":40,"ry":60,"stroke":"#f00","fillColor":"#00f",
-  		 "rAngle":45,"xScale":xScale01,"yScale":yScale01} 
+  		 "rAngle":45} 
   	];
 
-  	drawEllipse(svg07,ellipseData07);
+  	drawEllipse(svg07,ellipseData07,xScale01,yScale01);
 
   	// 長方形
   	rectData08 = [
-  		{"x":0.3,"y":0.9,"width":200,"height":90,"stroke":"lime" ,"xScale":xScale01,"yScale":yScale01},
-  		{"x":0.6,"y":0.5,"width":50,"height":80,"stroke":"#f00","fillColor":"#ff0",
-  		 "xScale":xScale01,"yScale":yScale01},
-  		{"x":0.2,"y":1.5,"width":40,"height":60,"stroke":"#f00","fillColor":"#00f",
-  		 "rAngle":45,"xScale":xScale01,"yScale":yScale01} 
+  		{"x":0.3,"y":0.9,"width":200,"height":90,"stroke":"lime"},
+  		{"x":0.6,"y":0.5,"width":50,"height":80,"stroke":"#f00","fillColor":"#ff0"},
+  		{"x":0.2,"y":1.5,"width":40,"height":60,"stroke":"#f00","fillColor":"#00f","rAngle":45} 
   	];
 
-  	drawRect(svg08,rectData08);
+  	drawRect(svg08,rectData08,xScale01,yScale01);
 
-		// scale definition
-		var xScale02 = d3.scale.linear()
-                       .domain([50,350])
-                       .range([50,350]);
+	// scale definition
+	var xScale02 = d3.scale.linear()
+                      .domain([50,350])
+                      .range([50,350]);
   
-  		var yScale02 = d3.scale.linear()
-                       .domain([50,150])
-                       .range([150,50]);       		
+  	var yScale02 = d3.scale.linear()
+                      .domain([50,150])
+                      .range([150,50]);       		
 
   	/* 直角三角形 */
   	var triangleData09 = [
   	  {"x1":50,"y1":30,"angle":15,"adjacent":200,"theta":30,"stroke":"#f00",
-  		"strokeWidth":4,"xScale":xScale02,"yScale":yScale02},
-  	  {"x1":350,"y1":130,"angle":190,"adjacent":150,"theta":25,"stroke":"#ff0","strokeWidth":4,"xScale":xScale02,"yScale":yScale02}
+  		"strokeWidth":4},
+  	  {"x1":350,"y1":130,"angle":190,"adjacent":150,"theta":25,"stroke":"#ff0","strokeWidth":4}
 
   	];
-  	drawRTriangle(svg09,triangleData09);
+  	drawRTriangle(svg09,triangleData09,xScale02,yScale02);
 
   	/** ポリゴン　*/
- 		var polyData10 = [
- 			{"cx":100,"cy":80,"r":50,"sides":3,"start":90,
- 			"stroke":"#ff0",
- 			"xScale":xScale02,"yScale":yScale02},
- 			{"cx":100,"cy":80,"r":50,"sides":3,"start":-90,
- 			"stroke":"#ff0",
- 			"xScale":xScale02,"yScale":yScale02},
- 			{"cx":220,"cy":90,"r":70,"sides":8,"start":0,
- 			"stroke":"#0f0","fillColor":c10(5),
- 			"xScale":xScale02,"yScale":yScale02},
- 			{"cx":330,"cy":60,"r":60,"sides":5,"start":180,
- 			"stroke":"#00f","strokeWidth":5,"fillColor":c10(7),
- 			"xScale":xScale02,"yScale":yScale02}
+	var polyData10 = [
+		{"cx":100,"cy":80,"r":50,"sides":3,"start":90,"stroke":"#ff0"},
+		{"cx":100,"cy":80,"r":50,"sides":3,"start":-90,"stroke":"#ff0"},
+ 		{"cx":220,"cy":90,"r":70,"sides":8,"start":0,"stroke":"#0f0","fillColor":c10(5)},
+ 		{"cx":330,"cy":60,"r":60,"sides":5,"start":180,"stroke":"#00f","strokeWidth":5,"fillColor":c10(7)}
 
  		];
 
- 		drawPolygon(svg10,polyData10);
+	drawPolygon(svg10,polyData10,xScale02,yScale02);
 
 
   	/* テキスト */
   	var textData11 = [
-  	  {"x":100,"y":150,"text":"anchor start","anchor":"start","stroke":"#ff0","fontSize":18,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02},
-  	  {"x":100,"y":100,"text":"anchor middle","anchor":"middle","stroke":"#ff0","fontSize":18,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02},
+  	  {"x":100,"y":150,"text":"anchor start","anchor":"start","stroke":"#ff0","fontSize":18,"strokeWidth":2,"fontFamily":"cursive"},
+  	  {"x":100,"y":100,"text":"anchor middle","anchor":"middle","stroke":"#ff0","fontSize":18,"strokeWidth":2,"fontFamily":"fantasy"},
   	  {"x":100,"y":50,"text":"anchor end","anchor":"end","stroke":"#ff0",
-  		"fontSize":18,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02},
-  	  {"x":250,"y":200,"text":"rotate 30","rAngle":30,"stroke":"#ff0","fillColor":"#f00",
-  		"fontSize":36,"strokeWidth":2,"xScale":xScale02,"yScale":yScale02}
+  		"fontSize":18,"strokeWidth":2,"fontFamily":"monospace"},
+  	  {"x":250,"y":200,"text":"rotate 30","rAngle":30,"stroke":"#ff0","fillColor":"#f00","fontSize":36,"strokeWidth":2,"fontFamily":"cursive"}
   	];
 
   	var circleData11 = [
-  		{"cx":100,"cy":140,"r":10,"stroke":"#fff","fillColor":c10(0),"stroke-width":4,"xScale":xScale02,"yScale":yScale02},
-  		{"cx":100,"cy":90,"r":10,"stroke":"#fff","fillColor":c10(1),"stroke-width":4,"xScale":xScale02,"yScale":yScale02},
-  		{"cx":100,"cy":40,"r":10,"stroke":"#fff","fillColor":c10(2),"stroke-width":4,"xScale":xScale02,"yScale":yScale02}
+  		{"cx":100,"cy":140,"r":10,"stroke":"#fff","fillColor":c10(0),"stroke-width":4},
+  		{"cx":100,"cy":90,"r":10,"stroke":"#fff","fillColor":c10(1),"stroke-width":4},
+  		{"cx":100,"cy":40,"r":10,"stroke":"#fff","fillColor":c10(2),"stroke-width":4}
   	];
-  	drawText(svg11,textData11);
-  	drawCircle(svg11,circleData11);
+  	drawText(svg11,textData11,xScale02,yScale02);
+  	drawCircle(svg11,circleData11,xScale02,yScale02);
 
   	/** draw mathjax */
   	var mathData12 = [
-  		{"x":100,"y":200,"text":"$$ax^2+bx+c=0$$","xScale":xScale02,"yScale":yScale02,"fontSize":16},
-  		{"x":100,"y":150,"text":"$$x=\\frac{-b\\pm\\sqrt{ b^2-4ac }}{2a}$$","xScale":xScale02,"yScale":yScale02,"fontSize":16}
+  		{"x":100,"y":200,"text":"$$ax^2+bx+c=0$$","fontSize":16},
+  		{"x":100,"y":150,"text":"$$x=\\frac{-b\\pm\\sqrt{ b^2-4ac }}{2a}$$","fontSize":16}
 
   	];
   	
-  	drawMathjax(svg12,mathData12);
+  	drawMathjax(svg12,mathData12,xScale02,yScale02);
 
   	/** 軸　*/
-		// scale definition
-		var xScale03 = d3.scale.linear()
-                       .domain([-50,300])
-                       .range([50,350]);
+	// scale definition
+	var xScale03 = d3.scale.linear()
+                      .domain([-50,300])
+                      .range([50,350]);
   
-		var yScale03 = d3.scale.linear()
-                       .domain([-100,300])
-                       .range([350,50]);       		
+	var yScale03 = d3.scale.linear()
+                      .domain([-100,300])
+                      .range([350,50]);       		
 
   	axesData13 = 
-  	{ "xAxis":true,
+  	{ 	"xAxis":true,
   		"yAxis":true,
   		"xTickValues":[-50,0,100,200,300],
   		"yTickValues":[-100.0,150.5,300.0],
   		"xTickPadding":5,
   		"yTickPadding":2,
- // 	"xOrient":["top"],
- //		"yOrient":["right"],
- 			"xFormat":"f",
- 			"yFormat":".1f",
- 			"stroke":"#ff0",
- 			"strokeWidth":1,
- //		"fillColor":"#00f",
+		"xFormat":"f",
+		"yFormat":".1f",
+		"stroke":"#ff0",
+		"strokeWidth":1,
   		"xScale":xScale03,
   		"yScale":yScale03
   	};
@@ -690,9 +642,9 @@ $(document).on('ready',function(){
   		"yGrid":true,
   		"xStep":100,
   		"yStep":50,
- 			"stroke":"#0f0",
- 			"strokeWidth":1,
- 			"opacity":0.3,
+ 		"stroke":"#0f0",
+ 		"strokeWidth":1,
+ 		"opacity":0.3,
   		"xScale":xScale03,
   		"yScale":yScale03
   	};
@@ -701,11 +653,11 @@ $(document).on('ready',function(){
 
  		/* Path */
  		pathData15 = [
- 			{"x":-30,"y":150,"stroke":"#f00","fillColor":"none"},
- 			{"x":80,"y":50,"stroke":"#f00","fillColor":"none"},
- 			{"x":150,"y":-80,"stroke":"#f00","fillColor":"none"},
- 			{"x":200,"y":200,"stroke":"#f00","fillColor":"none"},
- 			{"x":280,"y":250,"stroke":"#f00","fillColor":"none"}
+ 			{"x":-30,"y":150},
+ 			{"x":80,"y":50},
+ 			{"x":150,"y":-80},
+ 			{"x":200,"y":200},
+ 			{"x":280,"y":250}
 
  		]; 
  		drawAxes(svg15,axesData13);  	

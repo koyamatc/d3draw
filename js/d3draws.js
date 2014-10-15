@@ -12,8 +12,8 @@
 
   var pi = Math.PI;       //円周率
   var aDegree = pi/180;   //1°をラジアンに変換 
-  var svgContainer;       //svg保管変数　　　　　
-//  var xScaleV,yScaleV;
+  var svgContainer;       //svg保管　　　　　
+  var xScaleSv,yScaleSv;  //scale保管
  
   var originPoint = new Point(); // 原点
   var startPoint = new Point();　　// 始点
@@ -63,9 +63,10 @@
   };
 
   /* ベクトル線　描画関数　*/
-  function drawVectorA(svg,data){
+  function drawVectorA(svg,data,xScale,yScale){
 
     svgContainer = svg;
+
     var radians;
 
     var vectorsA = svg.selectAll(".vectorA")
@@ -73,30 +74,27 @@
           .enter()
           .append("line")
           .attr("x1", function(d,i){
-            xScaleV = d.xScale;
-            yScaleV = d.yScale;
-
-
+ 
             if(i==0){originPoint.x=d.x1;}
             startPoint.x = d.x1;
-            return d.xScale? d.xScale(d.x1):d.x1;
+            return xScale? xScale(d.x1):d.x1;
           })
           .attr("y1", function(d,i){
             if(i==0){originPoint.y=d.y1;}  // 原点
             startPoint.y = d.y1;　　　　　　　　　　//　始点
-            return d.yScale? d.yScale(d.y1):d.y1;
+            return yScale? yScale(d.y1):d.y1;
           })
           .attr("x2", function(d){
             radians = d.angles?(d.angles * aDegree):0;
             endPoint.x = Math.cos(radians)*d.length+d.x1;
             halfPoint.x = (endPoint.x-d.x1)/2;
-            return d.xScale? d.xScale(endPoint.x):endPoint.x;
+            return xScale? xScale(endPoint.x):endPoint.x;
           })
           .attr("y2", function(d){
             radians = d.angles?(d.angles * aDegree):0;
             endPoint.y = Math.sin(radians)*d.length+d.y1;
             halfPoint.y = (endPoint.y-d.y1)/2;
-            return d.yScale? d.yScale(endPoint.y):endPoint.y;
+            return yScale? yScale(endPoint.y):endPoint.y;
           })        
           .attr("id",function(d,i){
             return d.id?d.id:"vectorA"+i;
@@ -115,7 +113,7 @@
   /** 
     draw vector line between points 
                                     */
-  function drawVectorB(svg,data){
+  function drawVectorB(svg,data,xScale,yScale){
 
     svgContainer = svg;
 
@@ -124,26 +122,26 @@
           .enter()
           .append("line")
           .attr("x1", function(d,i){
-            xScaleV = d.xScale;
-            yScaleV = d.yScale;
+            xScaleV = xScale;
+            yScaleV = yScale;
             if(i==0){originPoint.x=d.x1;}
             startPoint.x = d.x1;
-            return d.xScale? d.xScale(d.x1):d.x1;
+            return xScale? xScale(d.x1):d.x1;
           })
           .attr("y1", function(d,i){
             if(i==0){originPoint.y=d.y1;}  // 原点
             startPoint.y = d.y1;　　　　　　　　　　//　始点
-            return d.yScale? d.yScale(d.y1):d.y1;
+            return yScale? yScale(d.y1):d.y1;
           })
           .attr("x2", function(d){
             endPoint.x = d.x2;
             halfPoint.x = (d.x2-d.x1)/2;
-            return d.xScale? d.xScale(d.x2):d.x2;
+            return xScale? xScale(d.x2):d.x2;
           })
           .attr("y2", function(d){
             endPoint.y = d.y2;
             halfPoint.y = (d.y2-d.y1)/2;
-            return d.yScale? d.yScale(d.y2):d.y2;
+            return yScale? yScale(d.y2):d.y2;
           })        
           .attr("id",function(d,i){
             return d.id?d.id:"vectorB"+i;
@@ -163,7 +161,7 @@
     draw vector line between points
        with arrowHead and Tail
                                     */
-  function drawVectorW(svg,data){
+  function drawVectorW(svg,data,xScale,yScale){
 
     svgContainer = svg;
 
@@ -172,26 +170,26 @@
           .enter()
           .append("line")
           .attr("x1", function(d,i){
-            xScaleV = d.xScale;
-            yScaleV = d.yScale;
+            xScaleV = xScale;
+            yScaleV = yScale;
             if(i==0){originPoint.x=d.x1;}
             startPoint.x = d.x1;
-            return d.xScale? d.xScale(d.x1):d.x1;
+            return xScale? xScale(d.x1):d.x1;
           })
           .attr("y1", function(d,i){
             if(i==0){originPoint.y=d.y1;}  // 原点
             startPoint.y = d.y1;　　　　　　　　　　//　始点
-            return d.yScale? d.yScale(d.y1):d.y1;
+            return yScale? yScale(d.y1):d.y1;
           })
           .attr("x2", function(d){
             endPoint.x = d.x2;
             halfPoint.x = (d.x2-d.x1)/2;
-            return d.xScale? d.xScale(d.x2):d.x2;
+            return xScale? xScale(d.x2):d.x2;
           })
           .attr("y2", function(d){
             endPoint.y = d.y2;
             halfPoint.y = (d.y2-d.y1)/2;
-            return d.yScale? d.yScale(d.y2):d.y2;
+            return yScale? yScale(d.y2):d.y2;
           })        
           .attr("id",function(d,i){
             return d.id?d.id:"vectorW"+i;
@@ -312,16 +310,16 @@
   };
 
   /** draw circle */
-  function drawCircle(svg,data){
+  function drawCircle(svg,data,xScale,yScale){
     svg.selectAll(".circle")
     .data(data)
     .enter()
     .append("circle")
     .attr("cx",function(d){ 
-      return d.xScale?d.xScale(d.cx):d.cx;
+      return xScale?xScale(d.cx):d.cx;
      })
     .attr("cy",function(d){ 
-      return d.yScale?d.yScale(d.cy):d.cy;
+      return yScale?yScale(d.cy):d.cy;
      })
     .attr("r",function(d){ return d.r })
     .attr("id", function(d,i){
@@ -340,8 +338,7 @@
 
 
   /* arc　描画関数　*/
-  //function drawArc(svg,startPos,endPos,innerRadius,outerRadius,strokeWidth,stroke,fillColor,xScale,yScale){
-  function drawArc(svg,data){
+  function drawArc(svg,data,xScale,yScale){
     var arc = d3.svg.arc()
       .innerRadius(function(d){return d.innerRadius})
       .outerRadius(function(d) {return d.outerRadius})
@@ -353,9 +350,9 @@
     .enter()
     .append("path")
     .attr("transform", function(d){
-      return d.xScale?"translate(" +
-                        d.xScale(d.xTranslate?d.xTranslate:0) + "," + 
-                        d.yScale(d.yTranslate?d.yTranslate:0) +")"
+      return xScale?"translate(" +
+                        xScale(d.xTranslate?d.xTranslate:0) + "," + 
+                        yScale(d.yTranslate?d.yTranslate:0) +")"
                       :"translate(" + 
                         d.xTranslate?d.xTranslate:0 + "," + 
                         d.yTranslate?d.yTranslate:0 + ")"
@@ -380,16 +377,16 @@
   };
 
   /** draw Ellipse */
-  function drawEllipse(svg,data){
+  function drawEllipse(svg,data,xScale,yScale){
     svg.selectAll(".ellipse")
       .data(data)
       .enter()
       .append("ellipse")
       .attr("cx",function(d){
-        return d.xScale?d.xScale(d.cx?d.cx:0):d.cx?d.cx:0;
+        return xScale?xScale(d.cx?d.cx:0):d.cx?d.cx:0;
       })
       .attr("cy",function(d){
-        return d.yScale?d.yScale(d.cy?d.cy:0):d.cy?d.cy:0;
+        return yScale?yScale(d.cy?d.cy:0):d.cy?d.cy:0;
       })
       .attr("rx",function(d){
         return d.rx?d.rx:20;
@@ -412,16 +409,16 @@
 
 
   /** draw Rectangle */
-  function drawRect(svg,data){
+  function drawRect(svg,data,xScale,yScale){
     svg.selectAll(".rect")
       .data(data)
       .enter()
       .append("rect")
       .attr("x",function(d){
-        return d.xScale?d.xScale(d.x?d.x:0):d.x?d.x:0;
+        return xScale?xScale(d.x?d.x:0):d.x?d.x:0;
       })
       .attr("y",function(d){
-        return d.yScale?d.yScale(d.y?d.y:0):d.y?d.y:0;
+        return yScale?yScale(d.y?d.y:0):d.y?d.y:0;
       })
       .attr("width",function(d){
         return d.width?d.width:20;
@@ -443,25 +440,27 @@
   };
 
   /** 直角三角形 */
-  function drawRTriangle(svg,data){
+  function drawRTriangle(svg,data,xScale,yScale){
     
     svgContainer = svg;
+    xScaleSv = xScale;
+    yScaleSv = yScale;
 
     svg.selectAll(".rtriangle")
       .data(data)
       .enter()
       .append("line")
       .attr("x1",function(d){
-        return d.xScale?d.xScale(d.x1):d.x1;
+        return xScale?xScale(d.x1):d.x1;
       })
       .attr("y1",function(d){
-        return d.yScale?d.yScale(d.y1):d.y1;
+        return yScale?yScale(d.y1):d.y1;
       })
       .attr("x2",function(d){
-        return d.xScale?d.xScale(d.x1):d.x1;
+        return xScale?xScale(d.x1):d.x1;
       })
       .attr("y2",function(d){
-        return d.yScale?d.yScale(d.y1):d.y1;
+        return yScale?yScale(d.y1):d.y1;
       })
       .each(makeRTriangle);
   };
@@ -479,19 +478,15 @@
     var factor = (d.theta >=0)?1:-1;
     var radians = d.angle?(-d.angle * aDegree):0;
     // start point
-    x1 = d.xScale? d.xScale(d.x1):d.x1;
-    y1 = d.yScale? d.yScale(d.y1):d.y1;
+    x1 = xScaleSv? xScaleSv(d.x1):d.x1;
+    y1 = yScaleSv? yScaleSv(d.y1):d.y1;
     // end point of adjacent
     x2 = Math.cos(radians) * d.adjacent * factor + x1;
     y2 = Math.sin(radians) * d.adjacent * factor + y1;
- //    x2 = d.xScale? d.xScale(x2):x2;
- //    y2 = d.yScale? d.yScale(y2):y2;
     // end point of opposite
     opposite = d.adjacent * Math.tan(d.theta * aDegree);
     x3 = Math.cos(radians+rightAngle) * opposite + x2;
     y3 = Math.sin(radians+rightAngle) * opposite + y2;
-//    x3 = d.xScale? d.xScale(x3):x3;
-//    y3 = d.yScale? d.yScale(y3):y3;
 
     pointsData.push(new Point(x1,y1));
     pointsData.push(new Point(x2,y2));
@@ -516,19 +511,21 @@
   };
 
   /** draw polygon */
-  function drawPolygon(svg,data){
+  function drawPolygon(svg,data,xScale,yScale){
     
     svgContainer = svg;
+    xScaleSv = xScale;
+    yScaleSv = yScale;
 
     svg.selectAll(".polygon")
       .data(data)
       .enter()
       .append("circle")
       .attr("cx",function(d){
-        return d.xScale?d.xScale(d.cx):d.cx;
+        return xScale?xScale(d.cx):d.cx;
       })
       .attr("cy",function(d){
-        return d.yScale?d.yScale(d.cy):d.cy;
+        return yScale?yScale(d.cy):d.cy;
       })
       .attr("r",function(d){
         return d.r;
@@ -545,8 +542,8 @@
     var sides = d.sides;
     var start = d.start?aDegree * d.start:0;
     var step = 2*pi / sides
-    var xScale = d.xScale;
-    var yScale = d.yScale;
+    var xScale = xScaleSv;
+    var yScale = yScaleSv;
     var classNm = d.class?d.class:"";
     var id = d.id?d.id:"polygon" + i;
 
@@ -588,15 +585,15 @@
 
 
   /** draw text */
-  function drawText(svg,data){
+  function drawText(svg,data,xScale,yScale){
       svg.selectAll(".text")
       .data(data)
       .enter()
       .append("text")
       .attr("x",function(d){
-        return d.xScale?d.xScale(d.x):d.x;})
+        return xScale?xScale(d.x):d.x;})
       .attr("y",function(d){
-        return d.yScale?d.yScale(d.y):d.y;})
+        return yScale?yScale(d.y):d.y;})
       .attr("text-anchor", function(d){
         return d.anchor?d.anchor:"none";})
       .text(function(d){return d.text})
@@ -604,20 +601,20 @@
         return d.color?d.class:"text";
       })
       .attr("id",function(d,i){
-        return d.id?d/id:"text" + i;})
+        return d.id?d.id:"text" + i;})
       .each(setAttr);
   }
 
   /** draw Mathjax */
-  function drawMathjax(svg,data){
+  function drawMathjax(svg,data,xScale,yScale){
     svg.selectAll("foreignObject")
     .data(data)
     .enter()
     .append("foreignObject")
     .attr("x",function(d){ 
-      return d.xScale?d.xScale(d.x):d.x; })
+      return xScale?xScale(d.x):d.x; })
     .attr("y",function(d){ 
-      return d.yScale?d.yScale(d.y):d.y; })
+      return yScale?yScale(d.y):d.y; })
     .append("xhtml:body")
     .text(function(d){return d.text;})
     .style("position","fixed")
@@ -635,6 +632,8 @@
         return d.strokeWidth?d.strokeWidth:2;})
       .attr("font-size",function(d){
         return d.fontSize?d.fontSize:12;})
+      .attr("font-family",function(d){
+        return d.fontFamily?d.fontFamily:"sans-serif";})
       .style("fill",function(d){
         return d.fillColor?d.fillColor:"none";})
       .attr("transform",function(d){
