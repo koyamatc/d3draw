@@ -5,6 +5,8 @@ d3draw
 
 ###d3.jsを使ってsvgの図形を描画する関数__d3draws.js__を作ってみました。
 
+自分がよく使う機能を入れてあります。[デモ](http://koyamatch.com/d3/svg/shapes/d3drawsjs.html)
+
 ## 機能 v1.0.0
 
  + 直線 drawLine 
@@ -34,3 +36,6 @@ d3draw
  + 軸　drawAxes
 
  + グリッド drawGrid
+ 
+ +　path drawPath 
+ 
