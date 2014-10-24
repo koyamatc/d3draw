@@ -5,32 +5,44 @@ d3draw
 
 ###d3.jsを使ってsvgの図形を描画する関数__d3draws.js__を作ってみました。
 
+自分がよく使う機能を入れてあります。[デモ](http://koyamatch.com/d3/svg/shapes/d3drawsjs.html)
+
 ## 機能 v1.0.0
 
- +直線 drawLine 
+ + 直線 drawLine 
 
- +ベクトル線（角度と長さ指定） drawVectorA 
+ + ベクトル線（角度と長さ指定） drawVectorA 
 
- +ベクトル線（始点・終点指定） drawVectorB 
+ + ベクトル線（始点・終点指定） drawVectorB 
 
- +両端矢印線 drawVectorW 
+ + 両端矢印線 drawVectorW 
 
- +円 drawCircle 
+ + 円 drawCircle 
 
- +円弧 drawArc 
+ + 円弧 drawArc 
 
- +楕円 drawEllipse 
+ + 楕円 drawEllipse 
 
- +長方形 drawRect 
+ + 長方形 drawRect 
 
- +直角三角形 drawRTriangle 
+ + 直角三角形 drawRTriangle 
 
- +多角形 drawPolygon 
+ + 多角形 drawPolygon 
 
- +文字 drawText 
+ + 文字 drawText 
 
- +Mathjax drawMathjax 
+ + Mathjax drawMathjax 
 
- +軸　drawAxes
+ + 軸　drawAxes
 
- +グリッド drawGrid
+ + グリッド drawGrid
+ 
+ +　path drawPath 
+ 
+
+更新情報
+2014.10.24　- 1.0.1
+
+1 グリッド描画バグ修正
+
+	+ スケールの定義でdomainとrangeで+-が反転しているとき、グリッド線を描画しない。

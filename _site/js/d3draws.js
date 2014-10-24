@@ -701,6 +701,20 @@
     var x1 = data["xScale"].domain()[1];
     var y0 = data["yScale"].domain()[0];
     var y1 = data["yScale"].domain()[1];
+
+    /* bug fix 20141024 start 1.0.1 */
+    if (x0 > x1) {
+      var _x = x1;
+      x1 = x0;
+      x0 = _x;
+    };
+    if (y0 > y1) {
+      var _y = y1;
+      y1 = y0;
+      y0 = _y;
+    };
+    /* bug fix 20141024 end*/
+
     var xStep = data["xStep"]?data["xStep"]:50;
     var yStep = data["yStep"]?data["yStep"]:50;
     var stroke = data["stroke"]?data["stroke"]:"#ccc";
