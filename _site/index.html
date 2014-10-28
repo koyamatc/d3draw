@@ -352,9 +352,10 @@ pathData15 = [
 	{"x":200,"y":200},
 	{"x":280,"y":250}
 	]; 
+pathAttrs15 = {"stroke":"#f00","strokeWidth":3}; 
 drawAxes(svg15,axesData13);  	
 drawGrid(svg15,gridData14);
-drawPath(svg15,pathData15,"#f00",3,"none",xScale03,yScale03);
+drawPath(svg15,pathData15,pathAttrs15,xScale03,yScale03);
 drawPath(svg15,pathData15);
 </pre>
 			</div>
@@ -659,10 +660,11 @@ drawPath(svg15,pathData15);
  			{"x":200,"y":200},
  			{"x":280,"y":250}
 
- 		]; 
+ 		];
+ 		pathAttrs15 = {"stroke":"#f00","strokeWidth":3}; 
  		drawAxes(svg15,axesData13);  	
  		drawGrid(svg15,gridData14);
- 		drawPath(svg15,pathData15,"#f00",3,"none",xScale03,yScale03);
+ 		drawPath(svg15,pathData15,pathAttrs15,xScale03,yScale03);
  		drawPath(svg15,pathData15);
 
 	</script>

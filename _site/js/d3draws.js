@@ -290,7 +290,7 @@
 
 
   /* path　描画関数　*/
-  function drawPath(svg,data,stroke,strokeWidth,fillColor,xScale,yScale){
+  function drawPath(svg,data,attrs,xScale,yScale){
 
     var stroke = stroke?stroke:"#000";
     var strokeWidth = strokeWidth?strokeWidth:2;
@@ -303,9 +303,20 @@
 
     svg.append("path")
           .attr("d", path(data))
-          .attr("stroke",stroke)
-          .attr("stroke-width",strokeWidth)
-          .style("fill",fillColor);
+          .attr("stroke",function(){
+            return attrs.stroke?attrs.stroke:"#000"})
+          .attr("stroke-width", function(){
+            return attrs.strokeWidth?attrs.strokeWidth:2
+          })
+          .attr("opacity", function(){
+            return attrs.opacity?attrs.opacity:1
+          })
+          .style("fill", function(){
+            return attrs.fillColor?attrs.fillColor:"none"
+          })
+          .attr("id", function(){
+            return attrs.id?attrs.id:""
+          });
  
   };
 
@@ -721,8 +732,8 @@
     var strokeWidth = data["strokeWidth"]?data["strokeWidth"]:1;
     var opacity = data["opacity"]?data["opacity"]:0.5;
 
- //   var gridGroup = svg.append("g")
-   //                   .attr("class","gridGroup");
+    var gridGroup = svg.append("g")
+                      .attr("class","gridGroup");
 
     if (data["xGrid"]){
 
@@ -730,7 +741,7 @@
 
         if (i!=0){
 
-          svg.append("line")
+          gridGroup.append("line")
             .attr("x1",data["xScale"](i))
             .attr("y1",data["yScale"](y0))
            .attr("x2",data["xScale"](i))
@@ -749,7 +760,7 @@
 
         if (i!=0){
 
-          svg.append("line")
+          gridGroup.append("line")
             .attr("x1",data["xScale"](x0))
             .attr("y1",data["yScale"](i))
            .attr("x2",data["xScale"](x1))
