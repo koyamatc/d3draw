@@ -202,9 +202,10 @@ drawRect(svg08,rectData08);
 			<div class="col-sm-7">
 <pre>
 var triangleData09 = [
-{"x1":50,"y1":30,"angle":15,"adjacent":200,"theta":30,"stroke":"#f00",
- "strokeWidth":4},
- {"x1":350,"y1":130,"angle":190,"adjacent":150,"theta":25,"stroke":"#ff0","strokeWidth":4}
+{"x1":50,"y1":30,"angle":15,"adjacent":200,"theta":30,
+"stroke":"#f00","strokeWidth":4},
+ {"x1":350,"y1":130,"angle":190,"adjacent":150,"theta":25,
+ "stroke":"#ff0","strokeWidth":4,"rightMark":true}
 ];
 
 drawRTriangle(svg09,triangleData09);
@@ -356,7 +357,7 @@ pathAttrs15 = {"stroke":"#f00","strokeWidth":3};
 drawAxes(svg15,axesData13);  	
 drawGrid(svg15,gridData14);
 drawPath(svg15,pathData15,pathAttrs15,xScale03,yScale03);
-drawPath(svg15,pathData15);
+drawPath(svg15,pathData15,{});
 </pre>
 			</div>
 		</div><!-- / row -->
@@ -565,9 +566,10 @@ drawPath(svg15,pathData15);
 
   	/* 直角三角形 */
   	var triangleData09 = [
-  	  {"x1":50,"y1":30,"angle":15,"adjacent":200,"theta":30,"stroke":"#f00",
-  		"strokeWidth":4},
-  	  {"x1":350,"y1":130,"angle":190,"adjacent":150,"theta":25,"stroke":"#ff0","strokeWidth":4}
+  	  {"x1":50,"y1":30,"angle":15,"adjacent":200,"theta":30,
+  	   "stroke":"#f00","strokeWidth":4},
+  	  {"x1":350,"y1":130,"angle":190,"adjacent":150,"theta":25,
+  	  "stroke":"#ff0","strokeWidth":4,"rightMark":true}
 
   	];
   	drawRTriangle(svg09,triangleData09,xScale02,yScale02);
@@ -665,7 +667,7 @@ drawPath(svg15,pathData15);
  		drawAxes(svg15,axesData13);  	
  		drawGrid(svg15,gridData14);
  		drawPath(svg15,pathData15,pathAttrs15,xScale03,yScale03);
- 		drawPath(svg15,pathData15);
+ 		drawPath(svg15,pathData15,{});
 
 	</script>
 </body>

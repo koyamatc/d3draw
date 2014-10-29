@@ -52,3 +52,9 @@ d3draw
 1 drawPath（） 属性設定方法を変更
 
 	+ 属性パラメータをjson形式で受け渡すように変更。
+
+2014.10.29 - 1.2.0
+
+1 drawRTriangle() 直角マーク描画機能追加　
+
+	+ 属性 rightMark: false/true 
