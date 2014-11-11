@@ -831,38 +831,71 @@
 
     if (data["xGrid"]){
 
-      for (var i = x0; i <= x1; i=i + xStep) {
+      for (var i = 0; i >= x0; i=i - xStep) {
 
         if (i!=0){
 
           gridGroup.append("line")
             .attr("x1",data["xScale"](i))
             .attr("y1",data["yScale"](y0))
-           .attr("x2",data["xScale"](i))
-           .attr("y2",data["yScale"](y1))
-           .attr("class","grid")
-           .attr("stroke",stroke)
-           .attr("stroke-width",strokeWidth)
-           .attr("opacity",opacity);
+            .attr("x2",data["xScale"](i))
+            .attr("y2",data["yScale"](y1))
+            .attr("class","grid")
+            .attr("stroke",stroke)
+            .attr("stroke-width",strokeWidth)
+            .attr("opacity",opacity);
+        }
+
+      };                  
+      for (var i = 0; i <= x1; i=i + xStep) {
+
+        if (i!=0){
+
+          gridGroup.append("line")
+            .attr("x1",data["xScale"](i))
+            .attr("y1",data["yScale"](y0))
+            .attr("x2",data["xScale"](i))
+            .attr("y2",data["yScale"](y1))
+            .attr("class","grid")
+            .attr("stroke",stroke)
+            .attr("stroke-width",strokeWidth)
+            .attr("opacity",opacity);
         }
 
       };                  
     };
+    
     if (data["yGrid"]){
 
-      for (var i = y0; i <= y1; i=i + yStep) {
+      for (var i = 0; i >= y0; i=i - yStep) {
 
         if (i!=0){
 
           gridGroup.append("line")
             .attr("x1",data["xScale"](x0))
             .attr("y1",data["yScale"](i))
-           .attr("x2",data["xScale"](x1))
-           .attr("y2",data["yScale"](i))
-           .attr("class","grid")
-           .attr("stroke",stroke)
-           .attr("stroke-width",strokeWidth)
-           .attr("opacity",opacity);
+            .attr("x2",data["xScale"](x1))
+            .attr("y2",data["yScale"](i))
+            .attr("class","grid")
+            .attr("stroke",stroke)
+            .attr("stroke-width",strokeWidth)
+            .attr("opacity",opacity);
+        }
+
+      };                  
+      for (var i = 0; i <= y1; i=i + yStep) {
+
+        if (i!=0){
+
+          gridGroup.append("line")
+            .attr("x1",data["xScale"](x0))
+            .attr("y1",data["yScale"](i))
+            .attr("x2",data["xScale"](x1))
+            .attr("y2",data["yScale"](i))
+            .attr("class","grid")
+            .attr("stroke",stroke)
+            .attr("stroke-width",strokeWidth)
+            .attr("opacity",opacity);
         }
 
       };                  
