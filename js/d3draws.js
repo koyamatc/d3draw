@@ -1,5 +1,5 @@
 /**
-  d3draws.js  v1.2.0
+  d3draws.js  v1.3.0
   functions to draw svg shapes with d3.js
 **/
 
@@ -295,11 +295,78 @@
     var stroke = stroke?stroke:"#000";
     var strokeWidth = strokeWidth?strokeWidth:2;
     var fillColor = fillColor?fillColor:"none";
+    // 2014.11.10 add start 1.3.0
+    var interPolate = attrs.interPolate?attrs.interPolate:"linear"
+    var path;
 
-    var path = d3.svg.line()
+    if (interPolate=="linear") {
+      path = d3.svg.line()
         .x(function(d) { return xScale?xScale(d.x):d.x; })
         .y(function(d) { return yScale?yScale(d.y):d.y; })
         .interpolate("linear");
+    };
+    if (interPolate=="basis") {
+      path = d3.svg.line()
+        .x(function(d) { return xScale?xScale(d.x):d.x; })
+        .y(function(d) { return yScale?yScale(d.y):d.y; })
+        .interpolate("basis");
+    };
+    if (interPolate=="step-before") {
+      path = d3.svg.line()
+        .x(function(d) { return xScale?xScale(d.x):d.x; })
+        .y(function(d) { return yScale?yScale(d.y):d.y; })
+        .interpolate("step-before");
+    };
+    if (interPolate=="step-after") {
+      path = d3.svg.line()
+        .x(function(d) { return xScale?xScale(d.x):d.x; })
+        .y(function(d) { return yScale?yScale(d.y):d.y; })
+        .interpolate("step-after");
+    };
+    if (interPolate=="basis-open") {
+      path = d3.svg.line()
+        .x(function(d) { return xScale?xScale(d.x):d.x; })
+        .y(function(d) { return yScale?yScale(d.y):d.y; })
+        .interpolate("basis-open");
+    };
+    if (interPolate=="basis-closed") {
+      path = d3.svg.line()
+        .x(function(d) { return xScale?xScale(d.x):d.x; })
+        .y(function(d) { return yScale?yScale(d.y):d.y; })
+        .interpolate("basis-closed");
+    };
+    if (interPolate=="bundle") {
+      path = d3.svg.line()
+        .x(function(d) { return xScale?xScale(d.x):d.x; })
+        .y(function(d) { return yScale?yScale(d.y):d.y; })
+        .interpolate("bundle");
+    };
+    if (interPolate=="cardinal") {
+      path = d3.svg.line()
+        .x(function(d) { return xScale?xScale(d.x):d.x; })
+        .y(function(d) { return yScale?yScale(d.y):d.y; })
+        .interpolate("cardinal");
+    };
+    if (interPolate=="cardinal-open") {
+      path = d3.svg.line()
+        .x(function(d) { return xScale?xScale(d.x):d.x; })
+        .y(function(d) { return yScale?yScale(d.y):d.y; })
+        .interpolate("cardinal-open");
+    };
+    if (interPolate=="cardinal-closed") {
+      path = d3.svg.line()
+        .x(function(d) { return xScale?xScale(d.x):d.x; })
+        .y(function(d) { return yScale?yScale(d.y):d.y; })
+        .interpolate("cardinal-closed");
+    };
+    if (interPolate=="monotone") {
+      path = d3.svg.line()
+        .x(function(d) { return xScale?xScale(d.x):d.x; })
+        .y(function(d) { return yScale?yScale(d.y):d.y; })
+        .interpolate("monotone");
+    };
+
+    // 2014.11.10 add end -------->
 
     svg.append("path")
           .attr("d", path(data))
@@ -345,7 +412,6 @@
     .each(setAttr);
 
   };
-
 
 
   /* arc　描画関数　*/
@@ -673,6 +739,8 @@
         return d.fontFamily?d.fontFamily:"sans-serif";})
       .style("fill",function(d){
         return d.fillColor?d.fillColor:"none";})
+      .attr("opacity",function(d){
+        return d.opacity?d.opacity:1}) // 1.3.0
       .attr("transform",function(d){
         return d.rAngle?"rotate("+d.rAngle+")":"rotate(0)"});   
 

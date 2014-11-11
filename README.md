@@ -58,3 +58,13 @@ d3draw
 1 drawRTriangle() 直角マーク描画機能追加　
 
 	+ 属性 rightMark: false/true 
+
+2014.11.10 - 1.3.0
+
+1 drawPath() interpolate 属性追加  
+	+ 属性 interPolate: 	step-before, step-after, 
+					    basis, basis-open, basis-closed
+					    bundle, cardinal, cardinal-open, cardinal-closed
+					    monotone
+2 setAttr(d) opacity 属性追加
+	+ 属性　opacity: 初期値 1					    
