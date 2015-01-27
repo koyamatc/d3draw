@@ -338,7 +338,7 @@ drawGrid(svg14,gridData14);
 		</div><!-- / row -->
 
 		<h2>
-		 Path　描画関数　drawPath(svg,data,stroke,strokeWidth,fillColor,xScale,yScale)
+		 Path　描画関数　drawPath(svg,data,attrs,xScale,yScale)
 		</h2>	
 		<div class="row">
 			<div class="col-sm-5">
@@ -358,6 +358,38 @@ drawAxes(svg15,axesData13);
 drawGrid(svg15,gridData14);
 drawPath(svg15,pathData15,pathAttrs15,xScale03,yScale03);
 drawPath(svg15,pathData15,{});
+</pre>
+			</div>
+		</div><!-- / row -->
+
+		<h2>
+		 Area　描画関数　drawArea(svg,data,attrs,xScale,yScale)
+		</h2>	
+		<div class="row">
+			<div class="col-sm-5">
+				<div id="svg16"></div>
+			</div>
+			<div class="col-sm-7">
+<pre>
+var pathData16 = [];
+
+上のy座標の関数
+function func16(i){
+  	return Math.sqrt(9-i*i);
+};
+
+// 下のy座標
+var y0Func16 = function y0func16(i){
+  	return 0;
+};
+
+for (var i = -3; i &lt;= 3; i=i+0.05) {
+  	pathData16.push(new Point(i,func16(i)));
+};
+pathAttrs16 = {"fillColor":"#00f","opacity":0.6}; 
+drawArea(svg16,pathData16,y0Func16,pathAttrs16,xScale16,yScale16);
+drawPath(svg16,pathData16,{"stroke":"#ff0"},xScale16,yScale16);
+drawAxes(svg16,axesData16);
 </pre>
 			</div>
 		</div><!-- / row -->
@@ -456,6 +488,9 @@ drawPath(svg15,pathData15,{});
 			.attr("class","svg2");
 
 	var svg15 = d3.select("#svg15")
+			.append("svg")
+			.attr("class","svg2");
+	var svg16 = d3.select("#svg16")
 			.append("svg")
 			.attr("class","svg2");
 
@@ -668,6 +703,53 @@ drawPath(svg15,pathData15,{});
  		drawGrid(svg15,gridData14);
  		drawPath(svg15,pathData15,pathAttrs15,xScale03,yScale03);
  		drawPath(svg15,pathData15,{});
+
+
+	/* Area */
+	// scale definition
+	var xScale16 = d3.scale.linear()
+                      .domain([-4,4])
+                      .range([50,350]);
+  
+	var yScale16 = d3.scale.linear()
+                      .domain([-3,5])
+                      .range([350,50]);       		
+
+ 	axesData16 = 
+  	{ 	"xAxis":true,
+  		"yAxis":true,
+  		"xTickValues":[-3,3],
+  		"yTickValues":[3],
+  		"xTickPadding":5,
+  		"yTickPadding":2,
+		"xFormat":"f",
+		"yFormat":".1f",
+		"stroke":"#ff0",
+		"strokeWidth":1,
+  		"xScale":xScale16,
+  		"yScale":yScale16
+  	};
+
+
+		var pathData16 = [];
+
+		上のy座標の関数
+		function func16(i){
+    	return Math.sqrt(9-i*i);
+		};
+
+		// 下のy座標
+		var y0Func16 = function y0func16(i){
+    	return 0;
+		};
+
+		for (var i = -3; i <= 3; i=i+0.05) {
+    	pathData16.push(new Point(i,func16(i)));
+		};
+		pathAttrs16 = {"fillColor":"#00f","opacity":0.6}; 
+		drawArea(svg16,pathData16,y0Func16,pathAttrs16,xScale16,yScale16);
+		drawPath(svg16,pathData16,{"stroke":"#ff0"},xScale16,yScale16);
+  	drawAxes(svg16,axesData16);
 
 	</script>
 </body>

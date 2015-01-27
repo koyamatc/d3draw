@@ -1,5 +1,5 @@
 /**
-  d3draws.js  v1.3.0
+  d3draws.js  v1.4.0
   functions to draw svg shapes with d3.js
 **/
 
@@ -905,3 +905,34 @@
 
   }
 
+  /* area　描画関数　 20150127 added */
+  function drawArea(svg,data,y0Func,attrs,xScale,yScale){
+
+    var stroke = stroke?stroke:"#000";
+    var strokeWidth = strokeWidth?strokeWidth:2;
+    var fillColor = fillColor?fillColor:"none";
+    var area;
+
+    area = d3.svg.area()
+        .x(function(d) { return xScale?xScale(d.x):d.x; })
+        .y0(function(d) { return yScale?yScale(y0Func(d.x)):y0Func(d.x);})
+        .y1(function(d) { return yScale?yScale(d.y):d.y; });
+
+    svg.append("path")
+          .attr("d", area(data))
+          .attr("stroke",function(){
+            return attrs.stroke?attrs.stroke:"#000"})
+          .attr("stroke-width", function(){
+            return attrs.strokeWidth?attrs.strokeWidth:2
+          })
+          .attr("opacity", function(){
+            return attrs.opacity?attrs.opacity:1
+          })
+          .style("fill", function(){
+            return attrs.fillColor?attrs.fillColor:"none"
+          })
+          .attr("id", function(){
+            return attrs.id?attrs.id:""
+          });
+ 
+  };
