@@ -1,5 +1,5 @@
 /**
-  d3draws.js  v1.4.0
+  d3draws.js  v1.4.1
   functions to draw svg shapes with d3.js
 **/
 
@@ -932,7 +932,7 @@
             return attrs.fillColor?attrs.fillColor:"none"
           })
           .attr("id", function(){
-            return attrs.id?attrs.id:""
+            return attrs._id?attrs._id:""
           });
  
   };
