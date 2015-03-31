@@ -68,3 +68,7 @@ d3draw
 					    monotone
 2 setAttr(d) opacity 属性追加
 	+ 属性　opacity: 初期値 1					    
+
+2015.01.27　- 1.4.0
+
+1 drawArea() 追加 

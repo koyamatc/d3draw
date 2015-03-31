@@ -382,7 +382,7 @@
             return attrs.fillColor?attrs.fillColor:"none"
           })
           .attr("id", function(){
-            return attrs.id?attrs.id:""
+            return attrs._id?attrs._id:""
           });
  
   };
